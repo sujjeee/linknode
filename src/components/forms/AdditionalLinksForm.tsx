@@ -13,11 +13,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 
-interface OtherLinksDetailsProps {
+interface AdditionalLinksFormProps {
 
 }
 
-const OtherLinksDetails: FC<OtherLinksDetailsProps> = ({ }) => {
+const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ }) => {
     return (
         <Card className='w-full'>
             <CardHeader className="space-y-1">
@@ -46,4 +46,4 @@ const OtherLinksDetails: FC<OtherLinksDetailsProps> = ({ }) => {
     )
 }
 
-export default OtherLinksDetails
+export default AdditionalLinksForm

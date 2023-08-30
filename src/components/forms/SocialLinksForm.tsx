@@ -15,11 +15,11 @@ import { Github } from 'lucide-react'
 import { SocialInput } from '../ui/social-input'
 
 
-interface SocialLinksDetailsProps {
+interface SocialLinksFormProps {
 
 }
 
-const SocialLinksDetails: FC<SocialLinksDetailsProps> = ({ }) => {
+const SocialLinksForm: FC<SocialLinksFormProps> = ({ }) => {
     return (
         <Card className='w-full'>
             <CardHeader className="space-y-1">
@@ -29,6 +29,7 @@ const SocialLinksDetails: FC<SocialLinksDetailsProps> = ({ }) => {
                 </CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-4">
+                <i className={`h-5 w-5 ri:alert-line`} />
                 <SocialInput placeholder='facebook.com' />
                 <SocialInput placeholder='facebook.com' />
                 <SocialInput placeholder='facebook.com' />
@@ -38,4 +39,4 @@ const SocialLinksDetails: FC<SocialLinksDetailsProps> = ({ }) => {
     )
 }
 
-export default SocialLinksDetails
+export default SocialLinksForm
