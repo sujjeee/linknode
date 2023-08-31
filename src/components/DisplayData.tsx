@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import ExternalLink from './ExternalLink';
-import { Github } from 'lucide-react'
+import { Icon } from '@iconify/react';
 
 interface SocialLink {
     l: string;
@@ -29,8 +29,6 @@ interface DisplayDataProps {
     acc: Acc;
 }
 
-
-
 const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
 
     const allSocialLinksAreEmpty =
@@ -44,6 +42,19 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
         !acc.e &&
         !acc.gh &&
         !acc.l;
+
+    const iconMap = {
+        f: "ph:facebook-logo-duotone",
+        t: "ph:twitter-logo-duotone",
+        ig: "ph:instagram-logo-duotone",
+        m: "ph:envelope-duotone",
+        tg: "ph:telegram-logo-duotone",
+        w: "ph:whatsapp-logo-duotone",
+        y: "ph:youtube-logo-duotone",
+        e: "ph:envelope-duotone",
+        gh: "ph:github-logo-duotone",
+        l: "ph:linkedin-logo-duotone"
+    };
 
     return (
         <main className="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
@@ -59,29 +70,18 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
             {!allSocialLinksAreEmpty && (
                 <div className="flex items-center justify-center flex-wrap">
                     {Object.entries(acc).map(([key, value]) => {
+                        console.log()
                         if (key !== "ls" && value) {
-                            const iconMap = {
-                                f: "ph:facebook-logo-duotone",
-                                t: "ph:twitter-logo-duotone",
-                                ig: "ph:instagram-logo-duotone",
-                                m: "ph:envelope-duotone",
-                                tg: "ph:telegram-logo-duotone",
-                                w: "ph:whatsapp-logo-duotone",
-                                y: "ph:youtube-logo-duotone",
-                                e: "ph:envelope-duotone",
-                                gh: "ph:github-logo-duotone",
-                                l: "ph:linkedin-logo-duotone"
-                            };
-
+                            const propIcon = iconMap[key as keyof typeof iconMap];
                             return (
                                 <span className="p-1" key={key}>
                                     <a href={value} target="_blank" rel="noopener noreferrer">
-                                        {/* <Icon name={iconMap[key]} className="h-6 w-6" /> */}
+                                        <Icon icon={propIcon} className="h-5 w-5" />
                                     </a>
                                 </span>
                             );
                         }
-                        return null; // Skip if no value or key is 'ls'
+                        return null;
                     })}
                 </div>
             )}

@@ -5,21 +5,21 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Github } from 'lucide-react'
-import { SocialInput } from '../ui/social-input'
+import { SocialInput } from '@/components/ui/social-input'
 
 
 interface SocialLinksFormProps {
-
+    socialLinksProvider: SocialLinkProviderProps[];
+    data: Record<keyof typeof socialLinksData, string>;
+    onUpdate: (linkId: keyof typeof socialLinksData, value: string) => void;
 }
 
-const SocialLinksForm: FC<SocialLinksFormProps> = ({ }) => {
+const SocialLinksForm: FC<SocialLinksFormProps> = ({
+    socialLinksProvider, data, onUpdate
+}) => {
     return (
         <Card className='w-full'>
             <CardHeader className="space-y-1">
@@ -29,11 +29,20 @@ const SocialLinksForm: FC<SocialLinksFormProps> = ({ }) => {
                 </CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-4">
-                <i className={`h-5 w-5 ri:alert-line`} />
-                <SocialInput placeholder='facebook.com' />
-                <SocialInput placeholder='facebook.com' />
-                <SocialInput placeholder='facebook.com' />
-                <SocialInput placeholder='facebook.com' />
+                {socialLinksProvider.map((link) => {
+                    return (
+                        <SocialInput
+                            key={link.name}
+                            id={link.name}
+                            icon={link.icon}
+                            placeholder={`${link.name}.com/johndoe`}
+                            value={data[link.id]}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                onUpdate(link.id, e.target.value);
+                            }}
+                        />
+                    );
+                })}
             </CardContent>
         </Card>
     )

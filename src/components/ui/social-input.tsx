@@ -1,19 +1,19 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Github } from 'lucide-react'
+import { Icon } from '@iconify/react';
 
 export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
-    icon?: React.ComponentType<{ size: number }>;
+    icon: string
 }
 
 const SocialInput = React.forwardRef<HTMLInputElement, InputProps>(
-    ({ className, icon: Icon, ...props }, ref) => {
+    ({ className, icon: propIcon, ...props }, ref) => {
         return (
             <div className="relative mt-1 flex rounded-md shadow-sm">
                 <span className="inline-flex items-center whitespace-nowrap rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-5 py-2.5 text-sm text-gray-500">
-                    <Github size={20} />
+                    <Icon icon={propIcon} className="h-5 w-5" />
                 </span>
                 <input
                     type='url'

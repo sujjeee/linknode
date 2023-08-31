@@ -1,11 +1,7 @@
 import React, { FC } from 'react'
 import DisplayData from './DisplayData'
 
-interface SocialLink {
-    l: string;
-    i: string;
-    u: string;
-}
+
 
 interface Acc {
     i?: string;
