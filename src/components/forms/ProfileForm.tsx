@@ -30,7 +30,7 @@ const ProfileForm: FC<ProfileFormProps> = ({ name, desc, image, onUpdate }) => {
                 </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid md:grid-cols-2 gap-2">
                     <div>
                         <Label htmlFor="name">Name</Label>
                         <Input

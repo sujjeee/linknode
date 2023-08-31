@@ -28,7 +28,7 @@ const SocialLinksForm: FC<SocialLinksFormProps> = ({
                     Enter your social media links here.
                 </CardDescription>
             </CardHeader>
-            <CardContent className="grid grid-cols-2 gap-4">
+            <CardContent className="grid md:grid-cols-2 gap-4">
                 {socialLinksProvider.map((link) => {
                     return (
                         <SocialInput

@@ -52,7 +52,7 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) 
                         return (
                             <Card className='p-4' key={index}>
                                 <div className='space-y-4'>
-                                    <div className="grid grid-cols-2 gap-2" >
+                                    <div className="grid md:grid-cols-2 gap-2" >
                                         <div>
                                             <Label htmlFor={`icon-key-${index}`}>Icon Key</Label>
                                             <Input
