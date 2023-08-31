@@ -59,19 +59,20 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
     return (
         <main className="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
             <div className="text-center">
-                {acc.n && <h1 className="text-2xl font-bold mt-4 text-slate-800">{acc.n}</h1>}
                 {acc.i && (
                     <div className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
                         <img src={acc.i} alt="name" className="h-full w-full object-cover" />
                     </div>
                 )}
+                {acc.n && <h1 className="text-2xl font-bold mt-4 text-slate-800">{acc.n}</h1>}
                 {acc.d && <p className="text-sm mt-2 text-slate-600">{acc.d}</p>}
             </div>
             {!allSocialLinksAreEmpty && (
                 <div className="flex items-center justify-center flex-wrap">
                     {Object.entries(acc).map(([key, value]) => {
-                        console.log()
-                        if (key !== "ls" && value) {
+                        const excludedKeys = ["i", "n", "d"];
+
+                        if (key !== "ls" && value && !excludedKeys.includes(key)) {
                             const propIcon = iconMap[key as keyof typeof iconMap];
                             return (
                                 <span className="p-1" key={key}>

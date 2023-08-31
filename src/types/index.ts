@@ -16,8 +16,8 @@ interface SocialLinkProviderProps {
     id: keyof typeof socialLinksData;
 }
 
-interface SocialLink {
-    l: string;
+interface AdditionalLinkProps {
     i: string;
+    l: string;
     u: string;
 }

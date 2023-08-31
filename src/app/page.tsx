@@ -57,10 +57,12 @@ export default function Home() {
           />
           <AdditionalLinksForm
             links={data.ls}
-            onUpdate={(links) =>
-              console.log('get', links)
-              // setData((prevData) => ({ ...prevData, ls: links }))
-            } />
+            onUpdate={(links: any) => {
+              console.log("link data", links)
+              setData((prevData) => ({ ...prevData, ls: links }))
+              return true
+            }}
+          />
         </div>
       </section>
       <section className='hidden lg:flex justify-end items-center'>
