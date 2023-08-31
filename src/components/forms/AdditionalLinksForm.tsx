@@ -16,7 +16,7 @@ import { Button } from '../ui/button'
 
 interface AdditionalLinksFormProps {
     links: AdditionalLinkProps[];
-    onUpdate: (links: AdditionalLinkProps[]) => boolean;
+    onUpdate: (links: AdditionalLinkProps[],) => void;
 }
 
 const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) => {
@@ -50,8 +50,8 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) 
                 <CardContent className="grid gap-4">
                     {links.map((link, index) => {
                         return (
-                            <Card className='p-4'>
-                                <div className='space-y-4' key={index}>
+                            <Card className='p-4' key={index}>
+                                <div className='space-y-4'>
                                     <div className="grid grid-cols-2 gap-2" >
                                         <div>
                                             <Label htmlFor={`icon-key-${index}`}>Icon Key</Label>
@@ -59,18 +59,55 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) 
                                                 id={`icon-key-${index}`}
                                                 type="text"
                                                 placeholder="ri:4k-fill"
-                                            // value={link}
-                                            // onChange={(e) => updateLink(index, e.target.value)}
+                                                value={link.i}
+                                                // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                //     const newLinks = [...links, { i: e.target.value, l: link.l, u: link.u }];
+                                                //     onUpdate(newLinks);
+                                                // }}
+                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                    const newLinks = [...links];
+                                                    newLinks[index].i = e.target.value; // Update the specific value
+                                                    onUpdate(newLinks);
+                                                }}
                                             />
                                         </div>
                                         <div className="grid gap-2">
                                             <Label htmlFor="link-name">Lable</Label>
-                                            <Input id="link-name" type="text" placeholder="Amazon" />
+                                            <Input
+                                                id="link-name"
+                                                type="text"
+                                                placeholder="Amazon"
+                                                value={link.l}
+                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                    const newLinks = [...links];
+                                                    newLinks[index].l = e.target.value; // Update the specific value
+                                                    onUpdate(newLinks);
+                                                }}
+                                            // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                            //     const newLinks = [...links, { i: link.i, l: e.target.value, u: link.u }];
+                                            //     onUpdate(newLinks);
+                                            // }}
+                                            // onChange={(e) => onUpdate(index, e.target.value)}
+                                            />
                                         </div>
                                     </div>
                                     <div className="grid gap-2">
                                         <Label htmlFor="link-url">Destination URL</Label>
-                                        <Input id="link-url" type="url" placeholder="http://example.com" />
+                                        <Input
+                                            id="link-url"
+                                            type="url"
+                                            placeholder="http://example.com"
+                                            value={link.u}
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                const newLinks = [...links];
+                                                newLinks[index].u = e.target.value; // Update the specific value
+                                                onUpdate(newLinks);
+                                            }}
+                                        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                        //     const newLinks = [...links, { i: link.i, l: e.target.value, u: e.target.value }];
+                                        //     onUpdate(newLinks);
+                                        // }}
+                                        />
                                     </div>
                                 </div>
                             </Card>

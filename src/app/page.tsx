@@ -1,10 +1,10 @@
 "use client"
+
 import React from 'react'
 import AdditionalLinksForm from '@/components/forms/AdditionalLinksForm'
 import ProfileForm from '@/components/forms/ProfileForm'
 import SocialLinksForm from '@/components/forms/SocialLinksForm'
 import MobileMockup from '@/components/MobileMockup'
-
 
 export default function Home() {
 
@@ -32,8 +32,8 @@ export default function Home() {
     { name: 'telegram', icon: "ph:telegram-logo-duotone", id: "tg" },
     { name: 'linkedin', icon: "ph:linkedin-logo-duotone", id: "l" },
     { name: 'email', icon: "ph:envelope-duotone", id: "e" },
+    { name: 'youtube', icon: "ph:whatsapp-logo-duotone", id: "y" },
     { name: 'whatsapp', icon: "ph:youtube-logo-duotone", id: "w" },
-    { name: 'youtube', icon: "ph:whatsapp-logo-duotone", id: "y" }
   ]
 
   return (
@@ -58,10 +58,12 @@ export default function Home() {
           <AdditionalLinksForm
             links={data.ls}
             onUpdate={(links: any) => {
-              console.log("link data", links)
+              // console.log("link data", links)
               setData((prevData) => ({ ...prevData, ls: links }))
-              return true
             }}
+          // onUpdate={(links: any, value: string) => {
+          //   setData((prevData) => ({ ...prevData, ls: links }))
+          // }}
           />
         </div>
       </section>

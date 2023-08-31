@@ -17,7 +17,7 @@ interface Acc {
     e?: string;
     gh?: string;
     l?: string;
-    ls: SocialLink[];
+    ls: AdditionalLinkProps[];
 }
 
 interface MobileMockupProps {
@@ -32,7 +32,7 @@ const MobileMockup: FC<MobileMockupProps> = ({ data }) => {
             <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
             <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
             <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-            <div className="rounded-[2rem] overflow-hidden w-full h-full dark:bg-gray-800">
+            <div className="rounded-[2rem] overflow-hidden w-full h-full dark:bg-gray-800 break-words">
                 {/* <div className='h-full bg-background'> */}
                 {/* hellow */}
                 <DisplayData acc={data} />

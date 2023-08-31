@@ -1,33 +1,6 @@
 import React, { FC } from 'react'
-import ExternalLink from './ExternalLink';
+import AdditionalLinkCard from './AdditionalLinkCard';
 import { Icon } from '@iconify/react';
-
-interface SocialLink {
-    l: string;
-    i: string;
-    u: string;
-}
-
-interface Acc {
-    i?: string;
-    n?: string;
-    d?: string;
-    f?: string;
-    t?: string;
-    ig?: string;
-    m?: string;
-    tg?: string;
-    w?: string;
-    y?: string;
-    e?: string;
-    gh?: string;
-    l?: string;
-    ls: SocialLink[];
-}
-
-interface DisplayDataProps {
-    acc: Acc;
-}
 
 const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
 
@@ -77,7 +50,7 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
                             return (
                                 <span className="p-1" key={key}>
                                     <a href={value} target="_blank" rel="noopener noreferrer">
-                                        <Icon icon={propIcon} className="h-5 w-5" />
+                                        <Icon icon={propIcon} className="h-6 w-6" />
                                     </a>
                                 </span>
                             );
@@ -87,8 +60,8 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
                 </div>
             )}
             <ul className="space-y-2">
-                {acc.ls.map((link, id) => (
-                    <ExternalLink
+                {acc.ls && acc.ls.map((link, id) => (
+                    <AdditionalLinkCard
                         label={link.l}
                         icon={link.i}
                         url={link.u}
