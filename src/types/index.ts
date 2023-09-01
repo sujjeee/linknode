@@ -34,6 +34,7 @@ interface SocialLinkProviderProps {
 }
 
 interface AdditionalLinkProps {
+    id: number
     i: string;
     l: string;
     u: string;
