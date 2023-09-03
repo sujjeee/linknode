@@ -30,6 +30,7 @@ import {
     restrictToVerticalAxis,
     restrictToParentElement,
 } from '@dnd-kit/modifiers';
+import { useData } from '@/lib/context/LinkContext';
 
 interface AdditionalLinksFormProps {
     links: AdditionalLinkProps[];
@@ -37,26 +38,22 @@ interface AdditionalLinksFormProps {
 }
 
 const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) => {
-
-    const scrollDownRef = React.useRef<HTMLDivElement | null>(null)
-    const [shouldScroll, setShouldScroll] = React.useState(false);
-
-    const [first, setFirst] = React.useState<number[]>([]); // Provide a type annotation for 'first'
-
-    let setIndex = Date.now()
-    const addLinkDetailForm = () => {
-        setFirst((prev) => [...prev, setIndex]);
-        console.log('cureent id', setIndex)
-        console.log('cureent state id', first)
-        setShouldScroll(true);
-
-    };
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         }),
     );
+
+    const scrollDownRef = React.useRef<HTMLDivElement | null>(null)
+    const [shouldScroll, setShouldScroll] = React.useState(false);
+    const { data, addNewData, updateIndex } = useData();
+
+    const addLinkDetailForm = () => {
+        const newLink = { id: Date.now(), i: '', l: '', u: '' };
+        addNewData(newLink);
+        setShouldScroll(true);
+    };
 
     React.useEffect(() => {
         if (shouldScroll && scrollDownRef.current) {
@@ -65,18 +62,34 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) 
         }
     }, [shouldScroll]);
 
+
+    // "handleDragEnd" function written by chatGPT
     function handleDragEnd(event: any) {
         const { active, over } = event;
 
         if (active.id !== over.id) {
-            setFirst((items) => {
-                const oldIndex = items.indexOf(active.id);
-                const newIndex = items.indexOf(over.id);
+            const updatedItems = [...data.ls]; // Accessing items from the context
+            const draggedItem: any = updatedItems.find((item) => item.id === active.id);
+            const targetItem: any = updatedItems.find((item) => item.id === over.id);
 
-                return arrayMove(items, oldIndex, newIndex);
-            });
+            const draggedIndex = updatedItems.indexOf(draggedItem);
+            const targetIndex = updatedItems.indexOf(targetItem);
+
+            console.log("draggedItem?", draggedIndex)
+            console.log("targetItem?", targetIndex)
+
+            if (draggedIndex !== -1 && targetIndex !== -1) {
+                // Remove the dragged item from its original position
+                updatedItems.splice(draggedIndex, 1);
+                // Insert the dragged item at the target position
+                updatedItems.splice(targetIndex, 0, draggedItem);
+                console.log("updated data", updatedItems)
+
+                updateIndex(updatedItems);
+            }
         }
     }
+
 
     return (
         <>
@@ -95,12 +108,12 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) 
                         modifiers={[restrictToVerticalAxis, restrictToParentElement]}
                     >
                         <SortableContext
-                            items={first}
+                            items={data.ls.map(link => link.id)}
                             strategy={verticalListSortingStrategy}
                         >
-                            {first.map((id, index) => {
-                                console.log('new id', id); // Log the id within the block
-                                return <SortableLinks key={index} id={id} />;
+                            {data.ls.map((link) => {
+                                console.log("data", data.ls)
+                                return <SortableLinks key={link.id} id={link.id} />
                             })}
                         </SortableContext>
                     </DndContext>
