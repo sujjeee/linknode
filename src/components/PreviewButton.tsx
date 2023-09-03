@@ -19,7 +19,7 @@ const PreviewButton: FC<PreviewButtonProps> = () => {
                         Preview page
                     </Button>
                 </DrawerTrigger>
-                <DrawerContent className="h-[75%] p-6 pt-10">
+                <DrawerContent className="h-[75%] pt-10">
                     <DisplayData acc={data} />
                 </DrawerContent>
             </Drawer.Root>

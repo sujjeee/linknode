@@ -30,14 +30,6 @@ export const SortableLinks: FC<SortableLinks> = ({ id, index }) => {
     };
 
     const { data, updateAdditionalInfo } = useData();
-    // const index = data.ls.findIndex(el => el.id === uniqueID)
-
-    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const newLinks: AdditionalLinkProps[] = [...data.ls];
-    //     const propertyName = e.target.name;
-    //     newLinks[uniqueID][propertyName] = e.target.value; // use square brackets here
-    //     updateAdditionalInfo(newLinks);
-    // };
 
     return (
         <div ref={setNodeRef} style={style} key={uniqueID}>
