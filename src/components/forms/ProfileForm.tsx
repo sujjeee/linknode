@@ -11,16 +11,19 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '../ui/textarea'
+import { useData } from '@/lib/context/LinkContext'
 
 
 interface ProfileFormProps {
-    name: string;
-    desc: string;
-    image: string;
-    onUpdate: (name: string, desc: string, image: string) => void;
 }
 
-const ProfileForm: FC<ProfileFormProps> = ({ name, desc, image, onUpdate }) => {
+const ProfileForm: FC<ProfileFormProps> = () => {
+    const { data, updateProfileInfo } = useData();
+    const handleInputChange = (event: any) => {
+        console.log("hitted form onchange in profiel")
+        const { name, value } = event.target;
+        updateProfileInfo(name, value);
+    };
     return (
         <Card className='w-full'>
             <CardHeader className="space-y-1">
@@ -35,24 +38,22 @@ const ProfileForm: FC<ProfileFormProps> = ({ name, desc, image, onUpdate }) => {
                         <Label htmlFor="name">Name</Label>
                         <Input
                             id="name"
+                            name="n"
                             type="text"
                             placeholder="John Doe"
-                            value={name}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                                onUpdate(e.target.value, image, desc)
-                            }
+                            value={data.n}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
                         <Label htmlFor="Profile-url">Profile Url</Label>
                         <Input
                             id="Profile-url"
+                            name="i"
                             type="url"
                             placeholder="https://example.com"
-                            value={image}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                                onUpdate(name, e.target.value, desc)
-                            }
+                            value={data.i}
+                            onChange={handleInputChange}
                         />
                     </div>
                 </div>
@@ -60,11 +61,10 @@ const ProfileForm: FC<ProfileFormProps> = ({ name, desc, image, onUpdate }) => {
                     <Label htmlFor="description">About yourself</Label>
                     <Textarea
                         id="description"
+                        name="d"
                         placeholder='type something here...'
-                        value={desc}
-                        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                            onUpdate(name, image, e.target.value)
-                        }
+                        value={data.d}
+                        onChange={handleInputChange}
                     />
                 </div>
             </CardContent>

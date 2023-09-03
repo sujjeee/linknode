@@ -1,5 +1,8 @@
+"use client"
+
 import React, { FC } from 'react'
 import DisplayData from './DisplayData'
+import { useData } from '@/lib/context/LinkContext';
 
 interface Acc {
     i?: string;
@@ -19,10 +22,11 @@ interface Acc {
 }
 
 interface MobileMockupProps {
-    data: Acc;
+    // data: Acc;
 }
 
-const MobileMockup: FC<MobileMockupProps> = ({ data }) => {
+const MobileMockup: FC<MobileMockupProps> = () => {
+    const { data } = useData();
     return (
         <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] min-w-[350px] h-[700px] w-[350px] shadow-xl">
             <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>

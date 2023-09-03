@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { FC } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Card } from '../ui/card';
@@ -7,39 +7,71 @@ import { useDraggable } from '@dnd-kit/core';
 
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
+import { useData } from '@/lib/context/LinkContext';
 
-export const SortableLinks = ({ id }: any) => {
+interface SortableLinks {
+    id: any
+    index: any
+}
+
+export const SortableLinks: FC<SortableLinks> = ({ id, index }) => {
+    let uniqueID = id.id
     const {
         attributes,
         listeners,
         setNodeRef,
         transform,
         transition,
-    } = useSortable({ id });
+    } = useSortable({ id: uniqueID });
 
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
     };
 
+    const { data, updateAdditionalInfo } = useData();
+    // const index = data.ls.findIndex(el => el.id === uniqueID)
+
+    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const newLinks: AdditionalLinkProps[] = [...data.ls];
+    //     const propertyName = e.target.name;
+    //     newLinks[uniqueID][propertyName] = e.target.value; // use square brackets here
+    //     updateAdditionalInfo(newLinks);
+    // };
+
     return (
-        <div ref={setNodeRef} style={style} key={id}>
+        <div ref={setNodeRef} style={style} key={uniqueID}>
             <Card className='p-4 relative' >
                 <div className='space-y-4'>
                     <div className="grid md:grid-cols-2 gap-2" >
                         <div className="grid gap-2">
-                            <Label htmlFor={`icon-key`}>Icon Key</Label>
+                            <Label htmlFor="link-icon">Icon Key</Label>
                             <Input
+                                id="link-icon"
+                                name="i"
                                 type="text"
                                 placeholder="ri:4k-fill"
+                                value={id.i}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                    const newLinks = [...data.ls];
+                                    newLinks[index].i = e.target.value; // Update the specific value
+                                    updateAdditionalInfo(newLinks);
+                                }}
                             />
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="link-name">Lable</Label>
                             <Input
                                 id="link-name"
+                                name="l"
                                 type="text"
                                 placeholder="Amazon"
+                                value={id.l}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                    const newLinks = [...data.ls];
+                                    newLinks[index].l = e.target.value; // Update the specific value
+                                    updateAdditionalInfo(newLinks);
+                                }}
                             />
                         </div>
                     </div>
@@ -47,9 +79,15 @@ export const SortableLinks = ({ id }: any) => {
                         <Label htmlFor="link-url">Destination URL</Label>
                         <Input
                             id="link-url"
+                            name="u"
                             type="url"
                             placeholder="http://example.com"
-
+                            value={id.u}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                const newLinks = [...data.ls];
+                                newLinks[index].u = e.target.value; // Update the specific value
+                                updateAdditionalInfo(newLinks);
+                            }}
                         />
                     </div>
                 </div>
@@ -57,7 +95,8 @@ export const SortableLinks = ({ id }: any) => {
                     <svg viewBox="0 0 20 20" width="15">
                         <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"
                             transform="rotate(-90,10,10)"
-                            fill={"currentcolor"}></path>
+                            fill={"currentcolor"}>
+                        </path>
                     </svg>
                 </button>
             </Card>

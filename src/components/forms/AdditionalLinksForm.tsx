@@ -33,11 +33,11 @@ import {
 import { useData } from '@/lib/context/LinkContext';
 
 interface AdditionalLinksFormProps {
-    links: AdditionalLinkProps[];
-    onUpdate: (links: AdditionalLinkProps[]) => void;
+    // links: AdditionalLinkProps[];
+    // onUpdate: (links: AdditionalLinkProps[]) => void;
 }
 
-const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) => {
+const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -111,9 +111,9 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = ({ links, onUpdate }) 
                             items={data.ls.map(link => link.id)}
                             strategy={verticalListSortingStrategy}
                         >
-                            {data.ls.map((link) => {
-                                console.log("data", data.ls)
-                                return <SortableLinks key={link.id} id={link.id} />
+                            {data.ls.map((link, index) => {
+                                console.log("data", link)
+                                return <SortableLinks key={link.id} id={link} index={index} />
                             })}
                         </SortableContext>
                     </DndContext>
