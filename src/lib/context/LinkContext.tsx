@@ -51,55 +51,52 @@ const initialData: DataProps = {
 };
 
 const demoData: DataProps = {
-    n: 'John Snow',
-    d: "I'm John Snow, the king in the north. I know Nothing.",
-    i: 'https://i.insider.com/56743fad72f2c12a008b6cc0',
-    f: 'https://www.facebook.com/john_snow',
-    t: 'https://twitter.com/john_snow',
-    ig: 'https://www.instagram.com/john_snow',
-    e: 'mail@john_snow.cc',
-    gh: 'https://github.com/john_snow',
-    tg: 'https://t.me/john_snow',
-    w: '+918888888888',
-    y: 'https://youtube.com/@john_snow',
-    l: 'https://linkedin.com/john_snow',
+    n: 'James Smith',
+    d: "I'm a self-taught developer who is always learning and creating cool stuffs.",
+    i: 'https://cdn.discordapp.com/attachments/1084897258920738839/1148147136974819359/dev_profile.png',
+    f: 'https://www.facebook.com/james_smith',
+    t: 'https://twitter.com/james_smith',
+    ig: 'https://www.instagram.com/james_smith',
+    e: 'mail@james_smith.cc',
+    gh: 'https://github.com/james_smith',
+    tg: 'https://t.me/james_smith',
+    w: '+916666666666',
+    y: 'https://youtube.com/@james_smith',
+    l: 'https://linkedin.com/james_smith',
     ls: [
         {
             id: 1,
-            i: 'ph:globe-duotone',
-            l: 'My Website',
+            i: 'ph:laptop-duotone',
+            l: 'My Portfolio Website',
             u: 'https://example.com',
         },
         {
             id: 2,
-            i: 'ant-design:amazon-outlined',
-            l: 'Amazon wishlist',
-            u: 'https://amazon.in',
+            i: 'ant-design:robot-outlined',
+            l: 'My Chatbot Project',
+            u: 'https://example.com/chatbot',
         },
         {
             id: 3,
-            i: 'grommet-icons:reactjs',
-            l: 'React JS course',
-            u: 'https://reactjs.org/',
+            i: 'material-symbols:network-intelligence',
+            l: 'My Machine Learning Project',
+            u: 'https://example.com/ml',
         },
         {
             id: 4,
-            i: 'iconoir:donate',
-            l: 'Donate for our cause',
-            u: 'https://who.int',
+            i: 'icon-park-outline:blockchain',
+            l: 'My Blockchain Project',
+            u: 'https://example.com/blockchain',
         },
         {
             id: 5,
-            i: 'ph:file-pdf',
-            l: 'Download my resume',
-            u: 'https://google.com',
+            i: 'ph:pencil-duotone',
+            l: 'My Blog Posts',
+            u: 'https://example.com/blog',
         },
     ],
 }
-interface ProfileInfoUpdate {
-    name: string;
-    value: string;
-}
+
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 

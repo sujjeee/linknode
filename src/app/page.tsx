@@ -17,7 +17,7 @@ export default function Home() {
           <ProfileForm />
           <SocialLinksForm />
           <AdditionalLinksForm />
-          <div className='flex gap-2 justify-center items-center w-full -mt-5'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full -mt-5'>
             <DemoData />
             <Publish />
             <Button className='w-full'>
