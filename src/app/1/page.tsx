@@ -22,13 +22,13 @@ const page: FC<pageProps> = ({ }) => {
     }, [acc]);
 
     return (
-        <>
+        <div className='p-2 pt-10'>
             {decodedData ? (
                 <DisplayData acc={decodedData} />
             ) : (
                 <div>Not found</div>
             )}
-        </>
+        </div>
     );
 
 

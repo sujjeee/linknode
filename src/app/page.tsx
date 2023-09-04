@@ -4,6 +4,10 @@ import ProfileForm from '@/components/forms/ProfileForm'
 import SocialLinksForm from '@/components/forms/SocialLinksForm'
 import MobileMockup from '@/components/MobileMockup'
 import PreviewButton from '@/components/PreviewButton'
+import DemoData from '@/components/buttons/DemoData'
+import { Button } from '@/components/ui/button'
+import { Github, Link } from 'lucide-react'
+import Publish from '@/components/buttons/Publish'
 
 export default function Home() {
   return (
@@ -13,6 +17,22 @@ export default function Home() {
           <ProfileForm />
           <SocialLinksForm />
           <AdditionalLinksForm />
+          <div className='flex gap-2 justify-center items-center w-full -mt-5'>
+            <DemoData />
+            <Publish />
+            <Button className='w-full'>
+              <Link className='mr-2 h-4 w-4' />
+              <a href="http://dub.co" target='_blank'>
+                Shortner
+              </a>
+            </Button>
+            <Button className='w-full'>
+              <Github className='mr-2 h-4 w-4' />
+              <a href="http://github.com/sujjeee" target='_blank'>
+                Github
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
       <section className='hidden lg:flex justify-end items-center'>

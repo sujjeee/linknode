@@ -11,13 +11,14 @@ export interface InputProps
 const SocialInput = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, icon: propIcon, ...props }, ref) => {
         return (
-            <div className="relative mt-1 flex rounded-md shadow-sm">
-                <span className="inline-flex items-center whitespace-nowrap rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-5 py-2.5 text-sm text-gray-500">
-                    <Icon icon={propIcon} className="h-5 w-5" />
-                </span>
+            <div className="relative">
+                <Icon icon={propIcon} className="h-5 w-5 absolute left-2.5 -translate-y-2/4 top-2/4 " />
                 <input
-                    type='url'
-                    className={cn(" border border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 block w-full rounded-r-md pr-10 text-sm focus:outline-none p-2.5", className)}
+                    type="search"
+                    className={cn(
+                        "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-10",
+                        className
+                    )}
                     ref={ref}
                     {...props}
                 />
