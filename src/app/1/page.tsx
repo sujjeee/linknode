@@ -33,7 +33,7 @@ const page: FC<pageProps> = ({ }) => {
     }, [acc]);
 
     return (
-        <div className='p-2 pt-10'>
+        <div className='p-2 pt-10 hide_scrollbar'>
             {decodedData ? (
                 <DisplayData acc={decodedData} />
             ) : (

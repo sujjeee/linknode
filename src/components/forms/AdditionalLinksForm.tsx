@@ -28,6 +28,7 @@ import {
 } from '@dnd-kit/modifiers';
 import { useData } from '@/lib/context/LinkContext';
 import { SortableLinks } from '@/components/SortableLinks';
+import GetIconInfo from '@/components/GetIconInfo';
 
 interface AdditionalLinksFormProps { }
 
@@ -58,7 +59,6 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
         }
     }, [shouldScroll]);
 
-
     // "handleDragEnd" function written by chatGPT
     function handleDragEnd(event: any) {
         const { active, over } = event;
@@ -86,12 +86,14 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
         }
     }
 
-
     return (
         <>
             <Card className='w-full'>
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl">Extra Links</CardTitle>
+                    <CardTitle className="text-2xl flex justify-between items-center">
+                        Extra Links
+                        <GetIconInfo />
+                    </CardTitle>
                     <CardDescription>
                         Enter your additional link details here.
                     </CardDescription>
