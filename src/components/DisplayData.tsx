@@ -8,7 +8,6 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
         !acc.f &&
         !acc.t &&
         !acc.ig &&
-        !acc.m &&
         !acc.tg &&
         !acc.w &&
         !acc.y &&
@@ -16,11 +15,10 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
         !acc.gh &&
         !acc.l;
 
-    const iconMap = {
+    const iconMap: Record<string, string> = {
         f: "ph:facebook-logo-duotone",
         t: "ph:twitter-logo-duotone",
         ig: "ph:instagram-logo-duotone",
-        m: "ph:envelope-duotone",
         tg: "ph:telegram-logo-duotone",
         w: "ph:whatsapp-logo-duotone",
         y: "ph:youtube-logo-duotone",
@@ -47,13 +45,37 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
 
                         if (key !== "ls" && value && !excludedKeys.includes(key)) {
                             const propIcon = iconMap[key as keyof typeof iconMap];
-                            return (
-                                <span className="p-1" key={key}>
-                                    <a href={value} target="_blank" rel="noopener noreferrer">
-                                        <Icon icon={propIcon} className="h-6 w-6" />
-                                    </a>
-                                </span>
-                            );
+                            if (key === "e") {
+                                // Handle email link generation
+                                return (
+                                    <span className="p-1" key={key}>
+                                        <a href={`mailto:${value}`}>
+                                            <Icon icon={propIcon} className="h-6 w-6" />
+                                        </a>
+                                    </span>
+                                );
+                            } else if (key === "w") {
+                                // Handle WhatsApp link generation
+                                const whatsappValue = value.startsWith("https://wa.me/")
+                                    ? value // If it already starts with the correct prefix
+                                    : `https://wa.me/${value}`;
+
+                                return (
+                                    <span className="p-1" key={key}>
+                                        <a href={whatsappValue} target="_blank" rel="noopener noreferrer">
+                                            <Icon icon={propIcon} className="h-6 w-6" />
+                                        </a>
+                                    </span>
+                                );
+                            } else {
+                                return (
+                                    <span className="p-1" key={key}>
+                                        <a href={value} target="_blank" rel="noopener noreferrer">
+                                            <Icon icon={propIcon} className="h-6 w-6" />
+                                        </a>
+                                    </span>
+                                );
+                            }
                         }
                         return null;
                     })}

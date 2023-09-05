@@ -1,6 +1,6 @@
 "use client"
 import React, { FC } from 'react'
-import { Button } from '../ui/button'
+import { Button } from '@/components/ui/button'
 import { Play } from 'lucide-react'
 import { useData } from '@/lib/context/LinkContext'
 

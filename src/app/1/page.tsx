@@ -4,10 +4,15 @@ import React, { FC } from 'react'
 import { useSearchParams } from 'next/navigation'
 import DisplayData from '@/components/DisplayData'
 import { decodeData } from '@/lib/utils'
+// import { Metadata } from 'next'
 
-interface pageProps {
+// TODO: add dynamic metadata 👇
+// export const metadata: Metadata = {
+//     title: `${}'s Links`,
+//     description: `find ${}'s links, all in one place.`,
+// }
 
-}
+interface pageProps { }
 
 const page: FC<pageProps> = ({ }) => {
     const searchParams = useSearchParams()
@@ -30,8 +35,6 @@ const page: FC<pageProps> = ({ }) => {
             )}
         </div>
     );
-
-
 }
 
 export default page 

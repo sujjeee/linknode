@@ -21,13 +21,13 @@ interface Acc {
     ls: AdditionalLinkProps[];
 }
 
-interface MobileMockupProps {
-    // data: Acc;
-}
+interface MobileMockupProps { }
 
 const MobileMockup: FC<MobileMockupProps> = React.memo(() => {
-    const [isEmpty, setIsEmpty] = React.useState<boolean>(false)
     const { data } = useData();
+
+    const [isEmpty, setIsEmpty] = React.useState<boolean>(false)
+
     React.useEffect(() => {
         function isEmptyValues(obj: any) {
             for (let key in obj) {

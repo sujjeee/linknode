@@ -8,7 +8,6 @@ import {
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
-
 import { Button } from '@/components/ui/button'
 import {
     DndContext,
@@ -19,25 +18,21 @@ import {
     useSensors,
 } from '@dnd-kit/core';
 import {
-    arrayMove,
     SortableContext,
     sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-
-import { SortableLinks } from '../test/SortableLinks';
 import {
     restrictToVerticalAxis,
     restrictToParentElement,
 } from '@dnd-kit/modifiers';
 import { useData } from '@/lib/context/LinkContext';
+import { SortableLinks } from '@/components/SortableLinks';
 
-interface AdditionalLinksFormProps {
-    // links: AdditionalLinkProps[];
-    // onUpdate: (links: AdditionalLinkProps[]) => void;
-}
+interface AdditionalLinksFormProps { }
 
 const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
+
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -46,11 +41,12 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
     );
 
     const scrollDownRef = React.useRef<HTMLDivElement | null>(null)
+
     const [shouldScroll, setShouldScroll] = React.useState(false);
     const { data, addNewData, updateIndex } = useData();
 
     const addLinkDetailForm = () => {
-        const newLink = { id: Date.now(), i: '', l: '', u: '' };
+        const newLink: AdditionalLinkProps = { id: Date.now(), i: '', l: '', u: '' };
         addNewData(newLink);
         setShouldScroll(true);
     };

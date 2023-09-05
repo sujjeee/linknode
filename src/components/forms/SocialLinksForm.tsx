@@ -23,16 +23,19 @@ const socialLinksProvider: SocialLinkProviderProps[] = [
     { name: 'youtube', icon: "ph:youtube-logo-duotone", id: "y" },
 ]
 
+type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
 interface SocialLinksFormProps { }
 
 const SocialLinksForm: FC<SocialLinksFormProps> = () => {
+
     const { data, updateSocialInfo } = useData();
 
-    const handleInputChange = (event: any) => {
-        console.log("hitted form onchange in profiel")
+    const handleInputChange = (event: InputChangeEvent) => {
         const { name, value } = event.target;
         updateSocialInfo(name, value);
     };
+
     return (
         <Card className='w-full'>
             <CardHeader className="space-y-1">

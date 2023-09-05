@@ -10,20 +10,23 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '../ui/textarea'
+import { Textarea } from '@/components/ui/textarea'
 import { useData } from '@/lib/context/LinkContext'
 
+interface ProfileFormProps { }
 
-interface ProfileFormProps {
-}
+type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 const ProfileForm: FC<ProfileFormProps> = () => {
+
+
     const { data, updateProfileInfo } = useData();
-    const handleInputChange = (event: any) => {
-        console.log("hitted form onchange in profiel")
+
+    const handleInputChange = (event: InputChangeEvent) => {
         const { name, value } = event.target;
         updateProfileInfo(name, value);
     };
+
     return (
         <Card className='w-full'>
             <CardHeader className="space-y-1">

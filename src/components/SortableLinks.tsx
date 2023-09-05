@@ -2,20 +2,20 @@
 import React, { FC } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Card } from '../ui/card';
-import { useDraggable } from '@dnd-kit/core';
-
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { useData } from '@/lib/context/LinkContext';
 
-interface SortableLinks {
-    id: any
-    index: any
+interface SortableLinksProps {
+    id: AdditionalLinkProps;
+    index: number;
 }
 
-export const SortableLinks: FC<SortableLinks> = ({ id, index }) => {
+export const SortableLinks: FC<SortableLinksProps> = ({ id, index }) => {
+
     let uniqueID = id.id
+
     const {
         attributes,
         listeners,
@@ -37,47 +37,47 @@ export const SortableLinks: FC<SortableLinks> = ({ id, index }) => {
                 <div className='space-y-4'>
                     <div className="grid md:grid-cols-2 gap-2" >
                         <div className="grid gap-2">
-                            <Label htmlFor="link-icon">Icon Key</Label>
+                            <Label htmlFor={`link-icon-${uniqueID}`}>Icon Key</Label>
                             <Input
-                                id="link-icon"
+                                id={`link-icon-${uniqueID}`}
                                 name="i"
                                 type="text"
                                 placeholder="ri:4k-fill"
                                 value={id.i}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                     const newLinks = [...data.ls];
-                                    newLinks[index].i = e.target.value; // Update the specific value
+                                    newLinks[index].i = e.target.value;
                                     updateAdditionalInfo(newLinks);
                                 }}
                             />
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="link-name">Lable</Label>
+                            <Label htmlFor={`link-name-${uniqueID}`}>Lable</Label>
                             <Input
-                                id="link-name"
+                                id={`link-name-${uniqueID}`}
                                 name="l"
                                 type="text"
                                 placeholder="Amazon"
                                 value={id.l}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                     const newLinks = [...data.ls];
-                                    newLinks[index].l = e.target.value; // Update the specific value
+                                    newLinks[index].l = e.target.value;
                                     updateAdditionalInfo(newLinks);
                                 }}
                             />
                         </div>
                     </div>
                     <div className="grid gap-2">
-                        <Label htmlFor="link-url">Destination URL</Label>
+                        <Label htmlFor={`link-name-${uniqueID}`}>Destination URL</Label>
                         <Input
-                            id="link-url"
+                            id={`link-url-${uniqueID}`}
                             name="u"
                             type="url"
                             placeholder="http://example.com"
                             value={id.u}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 const newLinks = [...data.ls];
-                                newLinks[index].u = e.target.value; // Update the specific value
+                                newLinks[index].u = e.target.value;
                                 updateAdditionalInfo(newLinks);
                             }}
                         />

@@ -3,11 +3,18 @@ import AdditionalLinksForm from '@/components/forms/AdditionalLinksForm'
 import ProfileForm from '@/components/forms/ProfileForm'
 import SocialLinksForm from '@/components/forms/SocialLinksForm'
 import MobileMockup from '@/components/MobileMockup'
-import PreviewButton from '@/components/PreviewButton'
+import PreviewButton from '@/components/buttons/PreviewButton'
 import DemoData from '@/components/buttons/DemoData'
 import { Button } from '@/components/ui/button'
-import { Github, Link } from 'lucide-react'
 import Publish from '@/components/buttons/Publish'
+import { Github, Link } from 'lucide-react'
+
+export const siteConfig = {
+  name: "LinkNode",
+  description: "LinkNode is an open-source tool that helps you generate one link for all your links.",
+  ogImage: "https://linknode.vercel.app/og-image.png",
+  url: "https://linknode.vercel.app",
+}
 
 export default function Home() {
   return (
@@ -38,7 +45,7 @@ export default function Home() {
       <section className='hidden lg:flex justify-end items-center'>
         <MobileMockup />
       </section>
-      <div className='md:hidden'>
+      <div className='lg:hidden'>
         <PreviewButton />
       </div>
     </main>
