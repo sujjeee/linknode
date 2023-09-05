@@ -10,7 +10,7 @@ import Publish from '@/components/buttons/Publish'
 import { Github, Link } from 'lucide-react'
 
 export const siteConfig = {
-  name: "LinkNode",
+  name: "LinkNode - one page, many links.",
   description: "LinkNode is an open-source tool that helps you generate one link for all your links.",
   ogImage: "https://linknode.vercel.app/og-image.png",
   url: "https://linknode.vercel.app",

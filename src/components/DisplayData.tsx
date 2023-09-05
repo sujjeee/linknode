@@ -1,6 +1,12 @@
 import React, { FC } from 'react'
-import AdditionalLinkCard from './AdditionalLinkCard';
+import AdditionalLinkCard from '@/components/AdditionalLinkCard';
 import { Icon } from '@iconify/react';
+import {
+    Avatar,
+    AvatarFallback,
+    AvatarImage,
+} from "@/components/ui/avatar"
+import { Image } from 'lucide-react';
 
 const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
 
@@ -31,9 +37,12 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
         <main className="p-2 h-full w-full space-y-8  max-w-lg mx-auto overflow-y-scroll hide_scrollbar">
             <div className="text-center">
                 {acc.i && (
-                    <div className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
-                        <img src={acc.i} alt="name" className="h-full w-full object-cover" />
-                    </div>
+                    <Avatar className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
+                        <AvatarImage src={acc.i} alt={acc.n} className="h-full w-full object-cover" />
+                        <AvatarFallback>
+                            <Image className='h-8 w-8 text-gray-300' />
+                        </AvatarFallback>
+                    </Avatar>
                 )}
                 {acc.n && <h1 className="text-2xl font-bold mt-4 text-slate-800">{acc.n}</h1>}
                 {acc.d && <p className="text-sm mt-2 text-slate-600">{acc.d}</p>}

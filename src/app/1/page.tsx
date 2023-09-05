@@ -1,9 +1,10 @@
 'use client'
 
 import React, { FC } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { notFound, useSearchParams } from 'next/navigation'
 import DisplayData from '@/components/DisplayData'
 import { decodeData } from '@/lib/utils'
+import DataLoading from '@/app/loading'
 // import { Metadata } from 'next'
 
 // TODO: add dynamic metadata 👇
@@ -17,6 +18,7 @@ interface pageProps { }
 const page: FC<pageProps> = ({ }) => {
     const searchParams = useSearchParams()
     const acc = searchParams.get('data')
+    if (!acc) notFound()
     const [decodedData, setDecodedData] = React.useState<Acc | null>(null);
 
     React.useEffect(() => {
@@ -31,7 +33,7 @@ const page: FC<pageProps> = ({ }) => {
             {decodedData ? (
                 <DisplayData acc={decodedData} />
             ) : (
-                <div>Not found</div>
+                <DataLoading />
             )}
         </div>
     );
