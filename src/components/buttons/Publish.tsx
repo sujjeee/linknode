@@ -69,10 +69,16 @@ const Publish: FC<PublishProps> = ({ }) => {
                             <div className="flex gap-3 w-full justify-between items-center">
                                 <Button
                                     className="w-full"
-                                // TODO: add share features
+                                    onClick={() => {
+                                        navigator.share({
+                                            title: `${data.n} - LinkNode`,
+                                            text: `Find all of ${data.n}'s links in one place.`,
+                                            url: `${inputLink}`,
+                                        })
+                                    }}
                                 >
                                     <Share2 className="mr-2 h-4 w-4" />
-                                    share
+                                    Share
                                 </Button>
                                 <Button
                                     className="w-full"

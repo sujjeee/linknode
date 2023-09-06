@@ -21,8 +21,12 @@ export default function GetIconInfo() {
             <DialogContent className="sm:max-w-[625px]">
                 <DialogHeader>
                     <DialogTitle>Get icon key</DialogTitle>
-                    <DialogDescription>
-                        Find the icon that best matches your link and copy the icon key, which looks like this: ph:laptop-duotone.
+                    <DialogDescription className="line">
+                        Find the icon that best matches your link and copy the icon key, which looks like this: {" "}
+                        <code className="py-0.5 px-1 border bg-background rounded-md">
+                            ic:sharp-cloud-queue
+                        </code>
+                        .
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4">

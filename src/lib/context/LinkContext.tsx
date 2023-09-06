@@ -15,11 +15,11 @@ interface DataProps {
     t: string;
     ig: string;
     tg: string;
-    w: string;
-    y: string;
     e: string;
+    y: string;
     gh: string;
     l: string;
+    w: string;
     ls: AdditionalLinkProps[];
 }
 
@@ -41,8 +41,8 @@ const initialData: DataProps = {
     f: '',
     t: '',
     ig: '',
-    gh: '',
     tg: '',
+    gh: '',
     l: '',
     e: '',
     w: '',
@@ -57,12 +57,12 @@ const demoData: DataProps = {
     f: 'https://www.facebook.com/james_smith',
     t: 'https://twitter.com/james_smith',
     ig: 'https://www.instagram.com/james_smith',
-    e: 'mail@james_smith.cc',
-    gh: 'https://github.com/james_smith',
     tg: 'https://t.me/james_smith',
+    gh: 'https://github.com/james_smith',
+    l: 'https://linkedin.com/james_smith',
+    e: 'mail@james_smith.cc',
     w: '+916666666666',
     y: 'https://youtube.com/@james_smith',
-    l: 'https://linkedin.com/james_smith',
     ls: [
         {
             id: 1,
@@ -124,7 +124,6 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const updateProfileInfo = (name: any, value: any) => {
-        console.log("hitted in context", data.ls)
         setData((prevState) => ({
             ...prevState,
             [name]: value,
@@ -132,7 +131,6 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const updateSocialInfo = (name: any, value: any) => {
-        console.log("hitted in context", name, value)
         setData(prevData => ({ ...prevData, [name]: value }))
     };
 

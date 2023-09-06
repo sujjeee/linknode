@@ -25,7 +25,6 @@ function IFrameImplementation(props: React.ComponentPropsWithRef<'iframe'>) {
     }>(null);
     const [_, triggerLoad] = useState(false)
     if (awaiter.current?.promise) {
-        console.log('suspend')
         throw awaiter.current.promise;
     }
     useLayoutEffect(() => {

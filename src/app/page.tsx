@@ -1,13 +1,15 @@
 import React from 'react'
+import Link from "next/link"
 import AdditionalLinksForm from '@/components/forms/AdditionalLinksForm'
 import ProfileForm from '@/components/forms/ProfileForm'
 import SocialLinksForm from '@/components/forms/SocialLinksForm'
 import MobileMockup from '@/components/MobileMockup'
 import PreviewButton from '@/components/buttons/PreviewButton'
 import DemoData from '@/components/buttons/DemoData'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import Publish from '@/components/buttons/Publish'
-import { Github, Link } from 'lucide-react'
+import { Github, LinkIcon } from 'lucide-react'
+import ShortnerButton from '@/components/buttons/ShortnerButton'
 
 export const siteConfig = {
   name: "LinkNode - one page, many links.",
@@ -27,18 +29,13 @@ export default function Home() {
           <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full -mt-5'>
             <DemoData />
             <Publish />
-            <Button className='w-full'>
-              <Link className='mr-2 h-4 w-4' />
-              <a href="http://dub.co" target='_blank'>
-                Shortner
-              </a>
-            </Button>
-            <Button className='w-full'>
+            <ShortnerButton />
+            <Link
+              href="http://github.com/sujjeee"
+              className={buttonVariants()}>
               <Github className='mr-2 h-4 w-4' />
-              <a href="http://github.com/sujjeee" target='_blank'>
-                Github
-              </a>
-            </Button>
+              Github
+            </Link>
           </div>
         </div>
       </section>

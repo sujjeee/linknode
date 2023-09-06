@@ -71,15 +71,11 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
             const draggedIndex = updatedItems.indexOf(draggedItem);
             const targetIndex = updatedItems.indexOf(targetItem);
 
-            console.log("draggedItem?", draggedIndex)
-            console.log("targetItem?", targetIndex)
-
             if (draggedIndex !== -1 && targetIndex !== -1) {
                 // Remove the dragged item from its original position
                 updatedItems.splice(draggedIndex, 1);
                 // Insert the dragged item at the target position
                 updatedItems.splice(targetIndex, 0, draggedItem);
-                console.log("updated data", updatedItems)
 
                 updateIndex(updatedItems);
             }
@@ -110,7 +106,6 @@ const AdditionalLinksForm: FC<AdditionalLinksFormProps> = () => {
                             strategy={verticalListSortingStrategy}
                         >
                             {data.ls.map((link, index) => {
-                                console.log("data", link)
                                 return <SortableLinks key={link.id} id={link} index={index} />
                             })}
                         </SortableContext>
