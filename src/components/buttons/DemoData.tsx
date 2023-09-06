@@ -4,9 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Play } from 'lucide-react'
 import { useData } from '@/lib/context/LinkContext'
 
-interface DemoDataProps {
-
-}
+interface DemoDataProps { }
 
 const DemoData: FC<DemoDataProps> = ({ }) => {
     const { showDemo } = useData()

@@ -19,7 +19,6 @@ type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement
 
 const ProfileForm: FC<ProfileFormProps> = () => {
 
-
     const { data, updateProfileInfo } = useData();
 
     const handleInputChange = (event: InputChangeEvent) => {

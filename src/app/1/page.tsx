@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, Suspense } from 'react'
+import React, { FC } from 'react'
 import { notFound, useSearchParams } from 'next/navigation'
 import DisplayData from '@/components/DisplayData'
 import { decodeData } from '@/lib/utils'
@@ -21,7 +21,6 @@ const page: FC<pageProps> = ({ }) => {
 
     if (!acc) {
         notFound();
-        return null;
     }
     const [decodedData, setDecodedData] = React.useState<Acc | null>(null);
 

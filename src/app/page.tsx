@@ -6,9 +6,9 @@ import SocialLinksForm from '@/components/forms/SocialLinksForm'
 import MobileMockup from '@/components/MobileMockup'
 import PreviewButton from '@/components/buttons/PreviewButton'
 import DemoData from '@/components/buttons/DemoData'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import Publish from '@/components/buttons/Publish'
-import { Github, LinkIcon } from 'lucide-react'
+import { Github } from 'lucide-react'
 import ShortnerButton from '@/components/buttons/ShortnerButton'
 
 export const siteConfig = {
