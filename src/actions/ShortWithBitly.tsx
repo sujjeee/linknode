@@ -1,6 +1,25 @@
+//  TODO: This code is not reliable and is intended for temporary use only.
+
 'use server'
 
+import { headers } from "next/headers";
+import RateLimiter from "@/lib/RateLimiter";
+const rateLimiter = new RateLimiter(2, 60 * 5000);
+
 export async function ShortWithBitly(props: string) {
+    const ip = headers().get("x-forwarded-for")!;
+
+    // ip for testing use only
+    // const ip = '192.168.234.2'
+
+    if (!ip) {
+        throw Object.assign(new Error('IP address not found!'), { statusCode: 404 });
+    }
+
+    if (!rateLimiter.isAllowed(ip)) {
+        throw new Error('Rate limit exceeded. Please try again later.');
+    }
+
     const response = await fetch('https://api-ssl.bitly.com/v4/shorten', {
         method: 'POST',
         headers: {

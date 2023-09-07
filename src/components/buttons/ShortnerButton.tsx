@@ -1,4 +1,5 @@
 "use client"
+
 import React from 'react'
 import {
     Dialog,
@@ -58,7 +59,7 @@ export default function ShortnerButton() {
     }
 
     React.useEffect(() => {
-        const url = `https://onelink-nu.vercel.app/1?data=${encodeData(data)}`;
+        const url = `${window.location.origin}/1?data=${encodeData(data)}`;
         setInputLink(url)
         setIsShortUrl(false)
         setHasCopied(false)
