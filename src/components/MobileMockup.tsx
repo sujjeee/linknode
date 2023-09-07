@@ -1,6 +1,6 @@
 "use client"
 
-import React, { FC } from 'react'
+import React from 'react'
 import DisplayData from './DisplayData'
 import { useData } from '@/lib/context/LinkContext';
 
@@ -23,7 +23,7 @@ interface Acc {
 
 interface MobileMockupProps { }
 
-const MobileMockup: FC<MobileMockupProps> = React.memo(() => {
+const MobileMockup: React.FC<MobileMockupProps> = React.memo(() => {
     const { data } = useData();
 
     const [isEmpty, setIsEmpty] = React.useState<boolean>(false)
@@ -59,4 +59,6 @@ const MobileMockup: FC<MobileMockupProps> = React.memo(() => {
     )
 })
 
+// added display due to eslint error
+MobileMockup.displayName = "MobileMockup"
 export default MobileMockup

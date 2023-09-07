@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import AdditionalLinkCard from '@/components/AdditionalLinkCard';
 import { Icon } from '@iconify/react';
 import {
@@ -6,9 +6,9 @@ import {
     AvatarFallback,
     AvatarImage,
 } from "@/components/ui/avatar"
-import { Image } from 'lucide-react';
+import { ImageIcon } from 'lucide-react';
 
-const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
+const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
 
     const allSocialLinksAreEmpty =
         !acc.f &&
@@ -38,9 +38,9 @@ const DisplayData: FC<DisplayDataProps> = ({ acc }) => {
             <div className="text-center">
                 {acc.i && (
                     <Avatar className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
-                        <AvatarImage src={acc.i} alt={acc.n} className="h-full w-full object-cover" />
+                        <AvatarImage src={acc.i} alt={`${acc.n}'s profile picture`} className="h-full w-full object-cover" />
                         <AvatarFallback>
-                            <Image className='h-8 w-8 text-gray-300' />
+                            <ImageIcon className='h-8 w-8 text-gray-300' />
                         </AvatarFallback>
                     </Avatar>
                 )}

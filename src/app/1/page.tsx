@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC } from 'react'
+import React from 'react'
 import { notFound, useSearchParams } from 'next/navigation'
 import DisplayData from '@/components/DisplayData'
 import { decodeData } from '@/lib/utils'
@@ -13,9 +13,7 @@ import DataLoading from './loading'
 //     description: `find ${}'s links, all in one place.`,
 // }
 
-interface pageProps { }
-
-const page: FC<pageProps> = ({ }) => {
+export default function Links() {
     const searchParams = useSearchParams()
     const acc = searchParams.get('data')
 
@@ -41,5 +39,3 @@ const page: FC<pageProps> = ({ }) => {
         </div>
     );
 }
-
-export default page 

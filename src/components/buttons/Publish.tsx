@@ -39,7 +39,7 @@ const Publish: FC<PublishProps> = ({ }) => {
         const url = `${window.location.origin}/1?data=${encodeData(data)}`;
         navigator.clipboard.writeText(url)
         return url
-    }, [isEmpty]);
+    }, [data]);
 
 
     function publish() {
@@ -118,7 +118,7 @@ const Publish: FC<PublishProps> = ({ }) => {
                 ) : (
                     <DialogClose>
                         <Button className="w-full">
-                            Can't publish with empty fields!
+                            Can&#39;t publish with empty fields!
                         </Button>
                     </DialogClose>
                 )}
