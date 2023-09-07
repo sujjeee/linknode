@@ -25,7 +25,6 @@
 - [Shadcn](https://upstash.com/) – ui components
 - [Vercel](https://vercel.com/) – hosting
 
-
 ## Running Locally 🚀
 
 1. Clone the repository
@@ -46,5 +45,12 @@ yarn install
 yarn dev
 ```
 
+<!-- ## Environment Variables 🌎
+To use Bitly API need to add the following environment variables to your .env file:
+```bash
+BITLY_API_KEY = 
+BITLY_GROUP_GUID = 
+``` -->
+
 ## Demo 👀
-coming soon...
+Try demo <a href="https://dub.sh/linknode">LinkNode</a>

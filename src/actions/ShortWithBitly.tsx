@@ -10,7 +10,7 @@ const rateLimiter = new RateLimiter(2, millisecondsPerDay);
 export async function ShortWithBitly(props: string) {
     const ip = headers().get("x-forwarded-for")!;
 
-    // ip for testing use only
+    // ip for local development use only
     // const ip = '192.168.234.2'
 
     if (!ip) {

@@ -41,6 +41,9 @@ const Publish: FC<PublishProps> = ({ }) => {
         return url
     }, [data]);
 
+    React.useEffect(() => {
+        setHasCopied(false);
+    }, [data]);
 
     function publish() {
         if (!isEmpty) {

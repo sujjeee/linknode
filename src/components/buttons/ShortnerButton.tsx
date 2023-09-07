@@ -31,39 +31,43 @@ import { toast } from 'sonner'
 
 export default function ShortnerButton() {
 
-    const { data } = useData()
-    const [inputLink, setInputLink] = React.useState<string>("")
-    const [isShortUrl, setIsShortUrl] = React.useState<boolean>(false)
-    const [isLoading, setIsLoading] = React.useState<boolean>(false)
-    const [hasCopied, setHasCopied] = React.useState<boolean>(false)
+    // const { data } = useData()
+    // const [inputLink, setInputLink] = React.useState<string>("")
+    // const [isShortUrl, setIsShortUrl] = React.useState<boolean>(false)
+    // const [isLoading, setIsLoading] = React.useState<boolean>(false)
+    // const [hasCopied, setHasCopied] = React.useState<boolean>(false)
 
 
-    const copyToClipboard = React.useCallback(async () => {
-        const url = inputLink;
-        navigator.clipboard.writeText(url)
-    }, [inputLink]);
+    // const copyToClipboard = React.useCallback(async () => {
+    //     const url = inputLink;
+    //     navigator.clipboard.writeText(url)
+    // }, [inputLink]);
 
-    async function handleShortLink() {
-        try {
-            setIsLoading(true)
-            const getShortLink = await ShortWithBitly(inputLink)
-            setInputLink(getShortLink)
-            setIsLoading(false)
-            setIsShortUrl(true)
-        } catch (error) {
-            setIsLoading(false)
-            error instanceof Error
-                ? toast.error(error.message)
-                : toast.error("Something went wrong. Please try again later.");
-        }
-    }
+    // async function handleShortLink() {
+    //     try {
+    //         setIsLoading(true)
+    //         const getShortLink = await ShortWithBitly(inputLink)
+    //         setInputLink(getShortLink)
+    //         setIsLoading(false)
+    //         setIsShortUrl(true)
+    //     } catch (error) {
+    //         setIsLoading(false)
+    //         error instanceof Error
+    //             ? toast.error(error.message)
+    //             : toast.error("Something went wrong. Please try again later.");
+    //     }
+    // }
 
-    React.useEffect(() => {
-        const url = `${window.location.origin}/1?data=${encodeData(data)}`;
-        setInputLink(url)
-        setIsShortUrl(false)
-        setHasCopied(false)
-    }, [data])
+    // React.useEffect(() => {
+
+    //     //  use in local development  
+    //     // const url = `https://linknode.vercel.app/1?data=${encodeData(data)}`;
+
+    //     const url = `${window.location.origin}/1?data=${encodeData(data)}`;
+    //     setInputLink(url)
+    //     setIsShortUrl(false)
+    //     setHasCopied(false)
+    // }, [data])
 
     return (
         <Dialog>
@@ -86,16 +90,16 @@ export default function ShortnerButton() {
                                 Generate a quick short link with bit.ly
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-2 px-0">
-                            <Input
+                        {/* <CardContent className="space-y-2 px-0"> */}
+                        {/* <Input
                                 placeholder="Enter your link"
                                 value={inputLink}
                                 required
                                 readOnly
-                            />
-                        </CardContent>
+                            /> */}
+                        {/* </CardContent> */}
                         <CardFooter className='p-0'>
-                            {isShortUrl ? (
+                            {/* {isShortUrl ? (
                                 <Button
                                     className="w-full"
                                     onClick={() => {
@@ -135,7 +139,13 @@ export default function ShortnerButton() {
                                     )}
 
                                 </Button>
-                            )}
+                            )} */}
+                            <Link
+                                href="https://bitly.com/"
+                                className={cn(buttonVariants(), 'w-full')}
+                            >
+                                Visit website
+                            </Link>
                         </CardFooter>
                     </TabsContent>
                     <TabsContent value="dubco">
