@@ -4,7 +4,8 @@
 
 import { headers } from "next/headers";
 import RateLimiter from "@/lib/RateLimiter";
-const rateLimiter = new RateLimiter(2, 60 * 5000);
+const millisecondsPerDay = 24 * 60 * 60 * 1000;
+const rateLimiter = new RateLimiter(2, millisecondsPerDay);
 
 export async function ShortWithBitly(props: string) {
     const ip = headers().get("x-forwarded-for")!;
