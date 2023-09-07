@@ -17,16 +17,23 @@ export const metadata: Metadata = {
   verification: {
     google: "5z2lDnQ6mdG9S2qZm74DNfOk3xdwLR-orzDHc5XiJxs"
   },
+  // added new keywords for seo
   keywords: [
-    "next.js",
-    "react",
-    "tailwind css",
-    "shadcn ui",
+    "bitly url shortner",
+    "bitly link shortener",
+    "link shortener",
+    "url shortener",
+    "bitly link",
+    "tinyurls",
+    "all in one link",
+    "free url shortner",
     "linknode",
     "onelink",
     "social links",
-    "linktree",
-    "link in bio"
+    "free linktree",
+    "link in bio",
+    "short my url",
+    "my links"
   ],
   authors: [
     {
