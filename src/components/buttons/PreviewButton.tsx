@@ -11,6 +11,21 @@ interface PreviewButtonProps { }
 
 const PreviewButton: FC<PreviewButtonProps> = () => {
     const { data } = useData();
+
+    const [isEmpty, setIsEmpty] = React.useState<boolean>(false)
+
+    React.useEffect(() => {
+        function isEmptyValues(obj: any) {
+            for (let key in obj) {
+                if (obj[key] !== "" && obj[key].length !== 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        setIsEmpty(isEmptyValues(data))
+    }, [data])
+
     return (
         <div className="fixed inset-x-0 bottom-0 p-4 z-10 flex justify-center items-center backdrop-blur-sm ">
             <Drawer.Root>
@@ -20,7 +35,11 @@ const PreviewButton: FC<PreviewButtonProps> = () => {
                     </Button>
                 </DrawerTrigger>
                 <DrawerContent className="h-[75%] px-2 pt-10 pb-2">
-                    <DisplayData acc={data} />
+                    {
+                        isEmpty
+                            ? <div className='w-full text-sm text-muted-foreground h-[90%] flex justify-center items-center'>Nothing to show...</div>
+                            : <DisplayData acc={data} />
+                    }
                 </DrawerContent>
             </Drawer.Root>
         </div>
