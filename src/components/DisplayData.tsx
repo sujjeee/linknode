@@ -34,7 +34,7 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
     };
 
     return (
-        <main className="p-2 h-full w-full space-y-8  max-w-lg mx-auto overflow-y-scroll hide_scrollbar">
+        <main className="p-2 h-full w-full space-y-8  max-w-lg mx-auto overflow-y-scroll hide_scrollbar z-50">
             <div className="text-center">
                 {acc.i && (
                     <Avatar className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">

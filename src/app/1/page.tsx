@@ -30,12 +30,17 @@ export default function Links() {
     }, [acc]);
 
     return (
-        <div className='p-2 pt-10 hide_scrollbar'>
-            {decodedData ? (
-                <DisplayData acc={decodedData} />
-            ) : (
-                <DataLoading />
-            )}
-        </div>
+        <>
+            <div className="fixed left-0 top-0 -z-10 h-full w-full">
+
+            </div>
+            <div className='p-2 pt-10 hide_scrollbar'>
+                {decodedData ? (
+                    <DisplayData acc={decodedData} />
+                ) : (
+                    <DataLoading />
+                )}
+            </div>
+        </>
     );
 }

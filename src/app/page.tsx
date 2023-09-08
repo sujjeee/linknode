@@ -10,6 +10,7 @@ import { buttonVariants } from '@/components/ui/button'
 import Publish from '@/components/buttons/Publish'
 import { Github } from 'lucide-react'
 import ShortnerButton from '@/components/buttons/ShortnerButton'
+import Background from '@/components/background/Background'
 
 export const siteConfig = {
   name: "LinkNode - one page, many links.",
@@ -23,10 +24,14 @@ export default function Home() {
     <main className='relative grid lg:grid-cols-3 h-screen px-2 md:px-0 md:container'>
       <section className='lg:col-span-2 flex flex-col items-center justify-center py-6 lg:px-20 gap-6 h-screen'>
         <div className='overflow-y-auto w-full hide_scrollbar flex flex-col gap-5 pb-20 md:pb-0'>
+          {/* all forms */}
           <ProfileForm />
           <SocialLinksForm />
           <AdditionalLinksForm />
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full -mt-5'>
+          {/* set background */}
+          <Background />
+          {/* bottom buttons */}
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full '>
             <DemoData />
             <Publish />
             <ShortnerButton />
