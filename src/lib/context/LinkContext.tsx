@@ -32,6 +32,9 @@ interface DataContextType {
     updateAdditionalInfo: (updatedIndex: any) => void;
     showDemo: () => void;
 
+    background: null | React.ReactNode
+    selectBackground: (backgroundData: null | React.ReactNode) => void;
+
 }
 
 const initialData: DataProps = {
@@ -98,10 +101,18 @@ const demoData: DataProps = {
 }
 
 
+
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     const [data, setData] = useState<DataProps>(initialData);
+
+    const [background, setBackground] = useState<null | React.ReactNode>(null);
+
+    const selectBackground = (backgroundData: any) => {
+        console.log("hitted fro bg selct", backgroundData)
+        setBackground(backgroundData);
+    };
 
     const addNewData = (linkData: AdditionalLinkProps) => {
         setData((prevData) => ({
@@ -139,7 +150,7 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <DataContext.Provider value={{ data, addNewData, updateIndex, updateProfileInfo, updateSocialInfo, updateAdditionalInfo, showDemo }}>
+        <DataContext.Provider value={{ data, addNewData, updateIndex, updateProfileInfo, updateSocialInfo, updateAdditionalInfo, showDemo, background, selectBackground }}>
             {children}
         </DataContext.Provider>
     );
