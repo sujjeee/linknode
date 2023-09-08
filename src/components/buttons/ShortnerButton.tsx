@@ -143,6 +143,7 @@ export default function ShortnerButton() {
                             <Link
                                 href="https://bitly.com/"
                                 className={cn(buttonVariants(), 'w-full')}
+                                target = "_blank"
                             >
                                 Visit website
                             </Link>
@@ -159,6 +160,7 @@ export default function ShortnerButton() {
                             <Link
                                 href="http://dub.co/"
                                 className={cn(buttonVariants(), 'w-full')}
+                                target = "_blank"
                             >
                                 Visit website
                             </Link>
