@@ -1,33 +1,37 @@
 import React from 'react';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 import { useData } from '@/lib/context/LinkContext';
-import { BACKGROUND_OPTIONS } from './BgSnippets';
+import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets';
 import { cn } from '@/lib/utils';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 type BackgroundCardProps = {};
 
 const BackgroundCard: React.FC<BackgroundCardProps> = () => {
     const { data, selectBackground } = useData()
     return (
-        <div className='flex gap-4 overflow-x-scroll hide_scrollbar' >
-            {BACKGROUND_OPTIONS.map((background, index) => {
-                return (
-                    <Button
-                        key={index}
-                        variant={"outline"}
-                        className={cn("relative min-h-[60px] min-w-[150px] overflow-hidden text-muted-foreground", {
-                            'bg-accent text-accent-foreground': data.bg === background.code
-                        })}
-                        onClick={() => {
-                            selectBackground(background.code)
-                        }}
-                    >
-                        {background.name}
-                    </Button>
-                );
-            })}
-        </div>
+        <ScrollArea>
+            <div className="flex space-x-4 pb-4">
+                {BACKGROUND_OPTIONS.map((background, index) => {
+                    return (
+                        <Button
+                            key={index}
+                            variant={"outline"}
+                            className={cn("relative min-h-[60px] min-w-[150px] overflow-hidden text-muted-foreground", {
+                                'bg-accent text-accent-foreground': data.bg === background.code
+                            })}
+                            onClick={() => {
+                                selectBackground(background.code)
+                            }}
+                        >
+                            {background.name}
+                        </Button>
+                    );
+                })}
+            </div>
+            <ScrollBar orientation="horizontal" />
+        </ScrollArea>
     );
 };
 
-export default BackgroundCard;
+export default BackgroundCard

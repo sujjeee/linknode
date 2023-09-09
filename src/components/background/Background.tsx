@@ -21,7 +21,7 @@ export default function Background() {
                     Customize your background theme from here.
                 </CardDescription>
             </CardHeader>
-            <CardContent className="grid gap-4">
+            <CardContent className="grid gap-4 pb-2.5">
                 <BackgroundCard />
             </CardContent>
         </Card>
