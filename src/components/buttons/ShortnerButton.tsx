@@ -141,6 +141,7 @@ export default function ShortnerButton() {
                                 </Button>
                             )} */}
                             <Link
+                                target='_blank'
                                 href="https://bitly.com/"
                                 className={cn(buttonVariants(), 'w-full')}
                             >
@@ -157,6 +158,7 @@ export default function ShortnerButton() {
                         </CardHeader>
                         <CardContent className="space-y-2 p-0">
                             <Link
+                                target='_blank'
                                 href="http://dub.co/"
                                 className={cn(buttonVariants(), 'w-full')}
                             >

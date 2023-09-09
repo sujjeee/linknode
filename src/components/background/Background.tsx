@@ -8,12 +8,9 @@ import {
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
-import BgThemes from './BgThemes'
+import BackgroundCard from '@/components/background/BackgroundCard'
 
-interface BackgroundProps { }
-
-const Background: React.FC<BackgroundProps> = () => {
-
+export default function Background() {
     return (
         <Card className='w-full -mt-5'>
             <CardHeader className="space-y-1">
@@ -21,14 +18,12 @@ const Background: React.FC<BackgroundProps> = () => {
                     Background
                 </CardTitle>
                 <CardDescription>
-                    Choose your backgound theme form here.
+                    Customize your background theme from here.
                 </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
-                <BgThemes />
+                <BackgroundCard />
             </CardContent>
         </Card>
     )
 }
-
-export default Background

@@ -5,13 +5,7 @@ import { notFound, useSearchParams } from 'next/navigation'
 import DisplayData from '@/components/DisplayData'
 import { decodeData } from '@/lib/utils'
 import DataLoading from './loading'
-// import { Metadata } from 'next'
-
-// TODO: add dynamic metadata 👇
-// export const metadata: Metadata = {
-//     title: `${}'s Links`,
-//     description: `find ${}'s links, all in one place.`,
-// }
+import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets'
 
 export default function Links() {
     const searchParams = useSearchParams()
@@ -29,10 +23,18 @@ export default function Links() {
         }
     }, [acc]);
 
+    // Find the matching background component based on the background code
+    const selectedBgOption = decodedData
+        ? BACKGROUND_OPTIONS.find((option) => option.code === decodedData.bg)
+        : null;
+
+    const selectedBgComponent = selectedBgOption ? selectedBgOption.component : null;
+
+
     return (
         <>
             <div className="fixed left-0 top-0 -z-10 h-full w-full">
-                <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                {selectedBgComponent}
             </div>
             <div className='p-2 pt-10 hide_scrollbar'>
                 {decodedData ? (

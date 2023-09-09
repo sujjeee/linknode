@@ -12,6 +12,7 @@ interface Acc {
     e?: string;
     gh?: string;
     l?: string;
+    bg?: string
     ls?: AdditionalLinkProps[];
 }
 
