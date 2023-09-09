@@ -10,6 +10,7 @@ import { buttonVariants } from '@/components/ui/button'
 import Publish from '@/components/buttons/Publish'
 import { Github } from 'lucide-react'
 import ShortnerButton from '@/components/buttons/ShortnerButton'
+import Background from '@/components/background/Background'
 
 export const siteConfig = {
   name: "LinkNode - one page, many links.",
@@ -20,18 +21,23 @@ export const siteConfig = {
 
 export default function Home() {
   return (
-    <main className='relative grid lg:grid-cols-3 h-screen px-2 md:px-0 md:container'>
+    <main className='relative grid lg:grid-cols-3 h-screen px-2 lg:px-0 md:container'>
       <section className='lg:col-span-2 flex flex-col items-center justify-center py-6 lg:px-20 gap-6 h-screen'>
-        <div className='overflow-y-auto w-full hide_scrollbar flex flex-col gap-5 pb-20 md:pb-0'>
+        <div className='overflow-y-auto w-full hide_scrollbar flex flex-col gap-5 pb-20 lg:pb-0'>
+
           <ProfileForm />
           <SocialLinksForm />
           <AdditionalLinksForm />
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full -mt-5'>
+
+          <Background />
+
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full '>
             <DemoData />
             <Publish />
             <ShortnerButton />
             <Link
-              href="https://github.com/sujjeee/linknode"
+              target='_blank'
+              href="http://github.com/sujjeee/linknode"
               className={buttonVariants()}>
               <Github className='mr-2 h-4 w-4' />
               Github
@@ -39,12 +45,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className='hidden lg:flex justify-end items-center'>
         <MobileMockup />
       </section>
+
       <div className='lg:hidden'>
         <PreviewButton />
       </div>
+
     </main>
   )
 }

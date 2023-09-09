@@ -34,8 +34,8 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
     };
 
     return (
-        <main className="p-2 h-full w-full space-y-8  max-w-lg mx-auto overflow-y-scroll hide_scrollbar">
-            <div className="text-center">
+        <main className="p-2 h-full w-full space-y-8 max-w-lg mx-auto overflow-y-scroll hide_scrollbar">
+            <div className="text-center z-50">
                 {acc.i && (
                     <Avatar className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
                         <AvatarImage src={acc.i} alt={`${acc.n}'s profile picture`} className="h-full w-full object-cover" />
@@ -50,7 +50,7 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
             {!allSocialLinksAreEmpty && (
                 <div className="flex items-center justify-center flex-wrap">
                     {Object.entries(acc).map(([key, value]) => {
-                        const excludedKeys = ["i", "n", "d"];
+                        const excludedKeys = ["i", "n", "d", "bg"];
 
                         if (key !== "ls" && value && !excludedKeys.includes(key)) {
                             const propIcon = iconMap[key as keyof typeof iconMap];

@@ -20,10 +20,13 @@ interface DataProps {
     gh: string;
     l: string;
     w: string;
+    bg: string
     ls: AdditionalLinkProps[];
 }
 
 interface DataContextType {
+
+    // Todo: fix type props
     data: DataProps;
     addNewData: (linkData: AdditionalLinkProps) => void;
     updateIndex: (updatedIndex: AdditionalLinkProps[]) => void;
@@ -31,7 +34,7 @@ interface DataContextType {
     updateSocialInfo: (name: any, value: any) => void;
     updateAdditionalInfo: (updatedIndex: any) => void;
     showDemo: () => void;
-
+    selectBackground: (bgcode: string) => void;
 }
 
 const initialData: DataProps = {
@@ -47,6 +50,7 @@ const initialData: DataProps = {
     e: '',
     w: '',
     y: '',
+    bg: '',
     ls: [],
 };
 
@@ -63,6 +67,7 @@ const demoData: DataProps = {
     e: 'mail@james_smith.cc',
     w: '+916666666666',
     y: 'https://youtube.com/@james_smith',
+    bg: '#4F4F4F',
     ls: [
         {
             id: 1,
@@ -98,10 +103,18 @@ const demoData: DataProps = {
 }
 
 
+
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     const [data, setData] = useState<DataProps>(initialData);
+
+    const selectBackground = (bgcode: string) => {
+        setData((prevState) => ({
+            ...prevState,
+            bg: bgcode,
+        }));
+    };
 
     const addNewData = (linkData: AdditionalLinkProps) => {
         setData((prevData) => ({
@@ -139,7 +152,7 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <DataContext.Provider value={{ data, addNewData, updateIndex, updateProfileInfo, updateSocialInfo, updateAdditionalInfo, showDemo }}>
+        <DataContext.Provider value={{ data, addNewData, updateIndex, updateProfileInfo, updateSocialInfo, updateAdditionalInfo, showDemo, selectBackground }}>
             {children}
         </DataContext.Provider>
     );

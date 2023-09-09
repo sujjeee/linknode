@@ -6,6 +6,7 @@ import { Drawer } from "vaul"
 import { DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
 import DisplayData from "@/components/DisplayData"
 import { useData } from '@/lib/context/LinkContext'
+import { BACKGROUND_OPTIONS } from '../background/BgSnippets'
 
 interface PreviewButtonProps { }
 
@@ -26,6 +27,12 @@ const PreviewButton: FC<PreviewButtonProps> = () => {
         setIsEmpty(isEmptyValues(data))
     }, [data])
 
+    const selectedBgOption = data
+        ? BACKGROUND_OPTIONS.find((option) => option.code === data.bg)
+        : null;
+
+    const selectedBgComponent = selectedBgOption ? selectedBgOption.component : null;
+
     return (
         <div className="fixed inset-x-0 bottom-0 p-4 z-10 flex justify-center items-center backdrop-blur-sm ">
             <Drawer.Root>
@@ -34,11 +41,18 @@ const PreviewButton: FC<PreviewButtonProps> = () => {
                         Preview page
                     </Button>
                 </DrawerTrigger>
-                <DrawerContent className="h-[75%] px-2 pt-10 pb-2">
+                <DrawerContent className="h-[75%] pb-2">
                     {
                         isEmpty
                             ? <div className='w-full text-sm text-muted-foreground h-[90%] flex justify-center items-center'>Nothing to show...</div>
-                            : <DisplayData acc={data} />
+                            : (
+                                <>
+                                    {!isEmpty && selectedBgComponent}
+                                    <div className='h-full pt-10 px-2'>
+                                        <DisplayData acc={data} />
+                                    </div>
+                                </>
+                            )
                     }
                 </DrawerContent>
             </Drawer.Root>

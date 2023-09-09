@@ -1,8 +1,10 @@
 "use client"
 
 import React from 'react'
-import DisplayData from './DisplayData'
+import DisplayData from '@/components/DisplayData'
 import { useData } from '@/lib/context/LinkContext';
+import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets';
+import { cn } from '@/lib/utils';
 
 interface Acc {
     i?: string;
@@ -40,20 +42,34 @@ const MobileMockup: React.FC<MobileMockupProps> = React.memo(() => {
         setIsEmpty(isEmptyValues(data))
     }, [data])
 
+    const selectedBgOption = data
+        ? BACKGROUND_OPTIONS.find((option) => option.code === data.bg)
+        : null;
+
+    const selectedBgComponent = selectedBgOption ? selectedBgOption.component : null;
+
     return (
-        <div className="relative mx-auto border-primary bg-primary border-[14px] rounded-[2.5rem] min-w-[350px] h-[700px] w-[350px] shadow-xl">
-            <div className="w-[148px] h-[18px] bg-primary top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-            <div className="h-[46px] w-[4px] bg-primary absolute -left-[17px] top-[124px] rounded-l-lg"></div>
-            <div className="h-[46px] w-[4px] bg-primary absolute -left-[17px] top-[178px] rounded-l-lg"></div>
-            <div className="h-[64px] w-[4px] bg-primary absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-            <div className="rounded-[2rem] overflow-hidden w-full h-full break-words">
-                <div className="bg-white h-full overflow-y-scroll hide_scrollbar pt-10 px-2">
-                    {
-                        isEmpty
-                            ? <div className='w-full text-sm text-muted-foreground h-[90%] flex justify-center items-center'>Nothing to show...</div>
-                            : <DisplayData acc={data} />
-                    }
-                </div>
+        <div className="relative mx-auto border-primary bg-primary border-[14px] rounded-[42px] min-w-[350px] h-[700px] w-[350px] shadow-xl z-50 ">
+            <div className="w-[148px] h-[18px] bg-primary top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute z-50"></div>
+            <div className="h-[46px] w-[4px] bg-primary absolute -left-[17px] top-[124px] rounded-l-lg z-50"></div>
+            <div className="h-[46px] w-[4px] bg-primary absolute -left-[17px] top-[178px] rounded-l-lg z-50"></div>
+            <div className="h-[64px] w-[4px] bg-primary absolute -right-[17px] top-[142px] rounded-r-lg z-50"></div>
+            <div className={cn(
+                "relative rounded-[32px] overflow-hidden w-full h-full break-words",
+                { "bg-white": !data.bg }
+            )}>
+                {
+                    isEmpty
+                        ? <div className='bg-white w-full text-sm text-muted-foreground h-full flex justify-center items-center z-20'>Nothing to show...</div>
+                        : (
+                            <>
+                                {!isEmpty && selectedBgComponent}
+                                <div className='h-full pt-10 px-2'>
+                                    <DisplayData acc={data} />
+                                </div>
+                            </>
+                        )
+                }
             </div>
         </div>
     )
