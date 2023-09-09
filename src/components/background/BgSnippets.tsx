@@ -5,17 +5,48 @@ const BgTheme1 = () => {
         <div className="absolute inset-0 -z-[10] h-full w-full bg-white" />
     );
 };
+
+const BgTheme8 = () => {
+    return (
+        <div className="absolute h-full -z-[10]  w-full bg-white"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div></div>
+    );
+};
+
 const BgTheme2 = () => {
     return (
         <div className="absolute inset-0  -z-[10] h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>
     );
 };
 
-const BgTheme3 = () => {
+const BgTheme9 = () => {
     return (
-        <div className="absolute top-0  h-full -z-[10] w-full rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"></div>
+        <div className="absolute inset-0 h-full -z-[10]  w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
     );
 };
+
+const BgTheme7 = () => {
+    return (
+        <div className="absolute inset-0 h-full -z-[10]  w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="absolute left-0 right-0 top-0 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
+    );
+};
+
+const BgTheme10 = () => {
+    return (
+        <div className="absolute h-full  -z-[10]  w-full bg-white"><div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div></div>
+    );
+};
+const BgTheme11 = () => {
+    return (
+        <div className="absolute inset-0  h-full -z-[10]  w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+    );
+};
+
+const BgTheme12 = () => {
+    return (
+        <div className="absolute inset-0 h-full -z-[10]  w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+    );
+};
+
 
 const BgTheme4 = () => {
     return (
@@ -35,41 +66,7 @@ const BgTheme6 = () => {
     );
 };
 
-const BgTheme7 = () => {
-    return (
-        <div className="absolute inset-0 h-full -z-[10]  w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="absolute left-0 right-0 top-0 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
-    );
-};
-
-const BgTheme8 = () => {
-    return (
-        <div className="absolute h-full -z-[10]  w-full bg-white"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div></div>
-    );
-};
-
-const BgTheme9 = () => {
-    return (
-        <div className="absolute inset-0 h-full -z-[10]  w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    );
-};
-const BgTheme10 = () => {
-    return (
-        <div className="absolute h-full  -z-[10]  w-full bg-white"><div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div></div>
-    );
-};
-const BgTheme11 = () => {
-    return (
-        <div className="absolute inset-0  h-full -z-[10]  w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-    );
-};
-
-const BgTheme12 = () => {
-    return (
-        <div className="absolute inset-0 h-full -z-[10]  w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
-    );
-};
-
-const BgTheme13 = () => {
+const BgTheme3 = () => {
     return (
         <div className="absolute inset-0 -z-[10] h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div></div>
     );
@@ -82,44 +79,24 @@ export const BACKGROUND_OPTIONS = [
         name: 'WhiteCanvas'
     },
     {
-        code: '#C9EBFF',
-        component: <BgTheme2 />,
-        name: 'LinearSky',
-    },
-    {
-        code: '#FCCDEE',
-        component: <BgTheme3 />,
-        name: 'InvertedMystic',
-    },
-    {
-        code: '#00A3FF',
-        component: <BgTheme4 />,
-        name: 'RadiantBlue',
-    },
-    {
-        code: '#AD6DF4',
-        component: <BgTheme5 />,
-        name: 'GradientOrb',
-    },
-    {
-        code: '#63E',
-        component: <BgTheme6 />,
-        name: 'RadialHalo',
-    },
-    {
-        code: '#FF00FF',
-        component: <BgTheme7 />,
-        name: 'BlurredFuchsia',
-    },
-    {
         code: '#4F4F4F',
         component: <BgTheme8 />,
         name: 'ShadowyGray'
     },
     {
+        code: '#C9EBFF',
+        component: <BgTheme2 />,
+        name: 'LinearSky',
+    },
+    {
         code: '#E6E7EB',
         component: <BgTheme9 />,
         name: 'SubtleGrayDots',
+    },
+    {
+        code: '#FF00FF',
+        component: <BgTheme7 />,
+        name: 'BlurredFuchsia',
     },
     {
         code: '#E5E7EB',
@@ -137,8 +114,23 @@ export const BACKGROUND_OPTIONS = [
         name: 'LightGrayLines',
     },
     {
+        code: '#00A3FF',
+        component: <BgTheme4 />,
+        name: 'RadiantBlue',
+    },
+    {
+        code: '#AD6DF4',
+        component: <BgTheme5 />,
+        name: 'GradientOrb',
+    },
+    {
+        code: '#63E',
+        component: <BgTheme6 />,
+        name: 'RadialHalo',
+    },
+    {
         code: '#D5C5FF',
-        component: <BgTheme13 />,
+        component: <BgTheme3 />,
         name: 'VividCircles',
     },
 ] as const;
