@@ -20,14 +20,14 @@ export async function generateMetadata({ searchParams }: any) {
             url: "https://linknode.vercel.app",
             title: `${data.n}'s - LinkNode`,
             description: `Find all of ${data.n}'s links in one place.`,
-            images: `http://localhost:3000/api/og?data=${encodeURI(data.n)}`,
+            images: `https://linknode.vercel.app/api/og?data=${encodeURI(data.n)}`,
             siteName: `${data.n}'s - LinkNode`,
         },
         twitter: {
             card: "summary_large_image",
             title: `${data.n} - LinkNode`,
             description: `Find all of ${data.n}'s links in one place.`,
-            images: `http://localhost:3000/api/og?data=${encodeURI(data.n)}`,
+            images: `https://linknode.vercel.app/api/og?data=${encodeURI(data.n)}`,
             creator: "@sujjeeee",
         },
     }
