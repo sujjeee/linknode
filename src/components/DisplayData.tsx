@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import AdditionalLinkCard from '@/components/AdditionalLinkCard';
 import { Icon } from '@iconify/react';

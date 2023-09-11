@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://linknode.vercel.app"),
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s - LinkNode`,
   },
   description: siteConfig.description,
   verification: {

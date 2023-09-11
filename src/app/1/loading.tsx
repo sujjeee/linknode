@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function DataLoading() {
     return (
-        <div className="p-2 h-full w-full space-y-8  max-w-lg mx-auto overflow-y-scroll hide_scrollbar pt-2">
+        <div className="p-2 h-full w-full space-y-8  max-w-lg mx-auto overflow-y-scroll hide_scrollbar pt-12">
             <div className="flex flex-col gap-3 justify-center items-center">
                 <Skeleton className="h-20 w-20 rounded-full" />
                 <Skeleton className="h-[30px] w-[200px] rounded-2xl" />
