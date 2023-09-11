@@ -27,7 +27,7 @@ export async function GET(req: Request) {
             (
                 <div tw="flex flex-col w-full h-full items-center justify-center bg-white mx-auto">
                     <div tw="flex text-6xl font-bold tracking-tight leading-tight px-8" style={{ overflowWrap: "break-word" }}>
-                        {name}'s - LinkNode
+                        {name}&#39;s - LinkNode
                     </div>
                 </div>
             ),
