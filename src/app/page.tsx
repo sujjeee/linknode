@@ -9,7 +9,7 @@ import DemoData from '@/components/buttons/DemoData'
 import { buttonVariants } from '@/components/ui/button'
 import Publish from '@/components/buttons/Publish'
 import { Github } from 'lucide-react'
-import ShortnerButton from '@/components/buttons/ShortnerButton'
+import ShortenerButton from '@/components/buttons/ShortenerButton'
 import Background from '@/components/background/Background'
 
 export const siteConfig = {
@@ -34,7 +34,7 @@ export default function Home() {
           <div className='grid grid-cols-2 md:grid-cols-4 gap-2 justify-center items-center w-full '>
             <DemoData />
             <Publish />
-            <ShortnerButton />
+            <ShortenerButton />
             <Link
               target='_blank'
               href="http://github.com/sujjeee/linknode"

@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   },
   // added new keywords for seo
   keywords: [
-    "bitly url shortner",
+    "bitly url shortener",
     "bitly link shortener",
     "link shortener",
     "url shortener",
     "bitly link",
     "tinyurls",
     "all in one link",
-    "free url shortner",
+    "free url shortener",
     "linknode",
     "onelink",
     "social links",

@@ -52,7 +52,7 @@ export const SortableLinks: FC<SortableLinksProps> = ({ id, index }) => {
                             />
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor={`link-name-${uniqueID}`}>Lable</Label>
+                            <Label htmlFor={`link-name-${uniqueID}`}>Label</Label>
                             <Input
                                 id={`link-name-${uniqueID}`}
                                 name="l"

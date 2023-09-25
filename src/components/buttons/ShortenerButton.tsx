@@ -29,7 +29,7 @@ import { useData } from '@/lib/context/LinkContext'
 import Link from 'next/link'
 import { toast } from 'sonner'
 
-export default function ShortnerButton() {
+export default function ShortenerButton() {
 
     // const { data } = useData()
     // const [inputLink, setInputLink] = React.useState<string>("")
@@ -74,7 +74,7 @@ export default function ShortnerButton() {
             <DialogTrigger asChild>
                 <Button className='w-full'>
                     <LinkIcon className='mr-2 h-4 w-4' />
-                    Shortner
+                    Shortener
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[450px]" showClose={false}>
