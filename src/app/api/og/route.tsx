@@ -1,3 +1,4 @@
+import { NextRequest } from "next/server";
 import type { ServerRuntime } from "next"
 import { ImageResponse } from "@vercel/og"
 
@@ -10,7 +11,7 @@ function truncateString({ str, maxLength }: { str: string, maxLength: number }) 
     return str;
 }
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
     try {
         const url = new URL(req.url)
         const { data } = Object.fromEntries(url.searchParams)
