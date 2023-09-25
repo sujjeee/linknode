@@ -159,7 +159,7 @@ export default function ShortenerButton() {
                         <CardContent className="space-y-2 p-0">
                             <Link
                                 target='_blank'
-                                href="http://dub.co/"
+                                href="https://dub.co/"
                                 className={cn(buttonVariants(), 'w-full')}
                             >
                                 Visit website

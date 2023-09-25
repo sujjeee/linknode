@@ -73,7 +73,7 @@ export const SortableLinks: FC<SortableLinksProps> = ({ id, index }) => {
                             id={`link-url-${uniqueID}`}
                             name="u"
                             type="url"
-                            placeholder="http://example.com"
+                            placeholder="https://example.com"
                             value={id.u}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 const newLinks = [...data.ls];
