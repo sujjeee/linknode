@@ -14,7 +14,7 @@ export default function GetIconInfo() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" id="al" aria-label="icons">
                     <Info className="h-4 w-4 text-muted-foreground hover:text-accent-foreground" />
                 </Button>
             </DialogTrigger>
