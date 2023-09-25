@@ -717,13 +717,13 @@
   resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-1.0.2.tgz#7af719a1bf33734840aee6f04eb548d2cedab9ec"
   integrity sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==
 
-"@vercel/og@^0.5.13":
-  version "0.5.13"
-  resolved "https://registry.yarnpkg.com/@vercel/og/-/og-0.5.13.tgz#0c28794d5a3f1aa3c0e211c4c5ea7552cdbecc84"
-  integrity sha512-okWQ2Jt+155Hn518Y8Tt4Iqb7QdNFoPvH/n4sMpC4K4bcijjo2RAEwXwlhTYHAAkoiJ0AEEeWeknZj1aBgOOqw==
+"@vercel/og@^0.5.17":
+  version "0.5.17"
+  resolved "https://registry.yarnpkg.com/@vercel/og/-/og-0.5.17.tgz#270d4a9f9c94fcfe4c38aad7a2a6fff4ac59c8ed"
+  integrity sha512-/GOyUBq3MhB3ygbhTJoZ0cHvwlyKdt0g8f4npuj4mwFlp57S7j4XWwgtqILK3XdFf25esN9i77fInrDkeRJfgA==
   dependencies:
     "@resvg/resvg-wasm" "2.4.1"
-    satori "0.10.4"
+    satori "0.10.8"
     yoga-wasm-web "0.3.3"
 
 acorn-jsx@^5.3.2:
@@ -2689,10 +2689,10 @@ safe-regex-test@^1.0.0:
     get-intrinsic "^1.1.3"
     is-regex "^1.1.4"
 
-satori@0.10.4:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/satori/-/satori-0.10.4.tgz#ba2b050b5cd00757e02dede45710d8b0a58aac04"
-  integrity sha512-GJNIsuiXhiC9kWGLvz04Op5DZy2UFYZAWsuUtkTlQt3r15o0K96PeD+FMfGN4luMPUHc4uV9gXqAoPxOK0omSw==
+satori@0.10.8:
+  version "0.10.8"
+  resolved "https://registry.yarnpkg.com/satori/-/satori-0.10.8.tgz#15dac06ef46d08e8fbc5bbb7e372eadbb7d2eded"
+  integrity sha512-WlPLxgpx5kIyMuOO6qi98DhZGIbRk5XJRqENkt6D6gyDBWGyo3M5kcSl0X/oSFHUH+n4unlzwMejoPM47s4zug==
   dependencies:
     "@shuding/opentype.js" "1.4.0-beta.0"
     css-background-parser "^0.1.0"
