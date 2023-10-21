@@ -26,15 +26,15 @@ export const metadata: Metadata = {
     "url shortener",
     "bitly link",
     "tinyurls",
-    "all in one link",
-    "free url shortener",
+    "bio for instagram",
+    "links",
     "linknode",
     "onelink",
     "social links",
     "free linktree",
     "link in bio",
-    "short my url",
-    "my links"
+    "link in bio instagram",
+    "linktree"
   ],
   authors: [
     {
