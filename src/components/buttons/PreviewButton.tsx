@@ -44,7 +44,7 @@ const PreviewButton: FC<PreviewButtonProps> = () => {
                 <DrawerContent className="h-[75%] pb-2">
                     {
                         isEmpty
-                            ? <div className='w-full text-sm text-muted-foreground h-[90%] flex justify-center items-center'>Nothing to show...</div>
+                            ? <div className='w-full text-sm text-muted-foreground h-[90%] flex justify-center items-center'>No information.</div>
                             : (
                                 <>
                                     {!isEmpty && selectedBgComponent}

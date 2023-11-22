@@ -44,3 +44,9 @@ interface AdditionalLinkProps {
 interface DisplayDataProps {
     acc: Acc;
 }
+
+interface CreateShortLink {
+    url: string
+    shortLink: string
+    password: string
+}

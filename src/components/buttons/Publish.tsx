@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button'
 import { encodeData } from '@/lib/utils';
 import { useData } from '@/lib/context/LinkContext';
 import { Check, Copy, Send, Share2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { DialogClose } from '@radix-ui/react-dialog';
 import {
     Dialog,
     DialogContent,
@@ -14,8 +16,6 @@ import {
     DialogTitle,
     DialogTrigger
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { DialogClose } from '@radix-ui/react-dialog';
 
 interface PublishProps { }
 
@@ -73,6 +73,7 @@ const Publish: FC<PublishProps> = ({ }) => {
                 {!isEmpty ? (
                     <>
                         <Input
+                            type='text'
                             value={inputLink}
                             readOnly
                         />

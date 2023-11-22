@@ -1,76 +1,114 @@
 "use client"
 
 import React from 'react'
+import { env } from "@/env.mjs"
+import { catchError, encodeData } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useData } from '@/lib/context/LinkContext'
+import { toast } from 'sonner'
+import createShortLink from '@/app/_actions/shortlink'
+import deleteLink from '@/app/_actions/deletelink'
+import {
+    Check,
+    Copy,
+    LinkIcon,
+    Loader2,
+    Trash2
+} from 'lucide-react'
 import {
     Dialog,
     DialogContent,
     DialogTrigger,
 } from "@/components/ui/dialog"
 import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-} from "@/components/ui/tabs"
-import {
-    Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Button, buttonVariants } from '@/components/ui/button'
-import { Check, Copy, LinkIcon, Loader2 } from 'lucide-react'
-import { Input } from '../ui/input'
-import { ShortWithBitly } from '@/actions/ShortWithBitly'
-import { cn, encodeData } from '@/lib/utils'
-import { useData } from '@/lib/context/LinkContext'
-import Link from 'next/link'
-import { toast } from 'sonner'
 
 export default function ShortenerButton() {
+    const { data } = useData()
+    const [isOpen, setIsOpen] = React.useState(false)
 
-    // const { data } = useData()
-    // const [inputLink, setInputLink] = React.useState<string>("")
-    // const [isShortUrl, setIsShortUrl] = React.useState<boolean>(false)
-    // const [isLoading, setIsLoading] = React.useState<boolean>(false)
-    // const [hasCopied, setHasCopied] = React.useState<boolean>(false)
+    const [shortUrlInfo, setShortUrlInfo] = React.useState({
+        url: '',
+        shortLink: '',
+        password: '',
+    });
+    const [shortedLink, setShortedLink] = React.useState('')
+    const [someResponseInfo, setSomeResponseInfo] = React.useState<any | null>(null)
+    const [hasCopied, setHasCopied] = React.useState(false)
+    const [isLoading, setIsLoading] = React.useState(false)
 
+    React.useEffect(() => {
+        if (typeof window === "undefined") return
+        const url = `${window.location.origin}/1?data=${encodeData(data)}`;
+        setShortUrlInfo((prevInfo) => ({
+            ...prevInfo,
+            url: url,
+        }));
+    }, [data]);
 
-    // const copyToClipboard = React.useCallback(async () => {
-    //     const url = inputLink;
-    //     navigator.clipboard.writeText(url)
-    // }, [inputLink]);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setShortUrlInfo((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
-    // async function handleShortLink() {
-    //     try {
-    //         setIsLoading(true)
-    //         const getShortLink = await ShortWithBitly(inputLink)
-    //         setInputLink(getShortLink)
-    //         setIsLoading(false)
-    //         setIsShortUrl(true)
-    //     } catch (error) {
-    //         setIsLoading(false)
-    //         error instanceof Error
-    //             ? toast.error(error.message)
-    //             : toast.error("Something went wrong. Please try again later.");
-    //     }
-    // }
+    async function handleSubmit() {
+        try {
+            setIsLoading(true);
 
-    // React.useEffect(() => {
+            const response = await createShortLink(shortUrlInfo);
 
-    //     //  use in local development  
-    //     // const url = `https://linknode.vercel.app/1?data=${encodeData(data)}`;
+            if (!response) {
+                throw new Error('Error creating link');
+            }
 
-    //     const url = `${window.location.origin}/1?data=${encodeData(data)}`;
-    //     setInputLink(url)
-    //     setIsShortUrl(false)
-    //     setHasCopied(false)
-    // }, [data])
+            toast.success('Link created successfully!');
+
+            setSomeResponseInfo(response);
+            setShortedLink(`https://${env.NEXT_PUBLIC_BASE_SHORT_DOMAIN}/${response.key}`);
+        } catch (error) {
+            catchError(error)
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    async function handleDelete() {
+        try {
+            setIsLoading(true);
+
+            const response = await deleteLink(someResponseInfo);
+
+            if (!response) {
+                throw new Error('Error deleting link');
+            }
+
+            toast.success('Link deleted successfully!');
+
+            setIsOpen(false);
+        } catch (error) {
+            catchError(error)
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    const copyToClipboard = React.useCallback(() => {
+        if (shortedLink) {
+            navigator.clipboard.writeText(shortedLink)
+            setHasCopied(true);
+        }
+    }, [shortedLink]);
 
     return (
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <Button className='w-full'>
                     <LinkIcon className='mr-2 h-4 w-4' />
@@ -78,97 +116,99 @@ export default function ShortenerButton() {
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[450px]" showClose={false}>
-                <Tabs defaultValue="account" >
-                    <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="bitly">Bit.ly</TabsTrigger>
-                        <TabsTrigger value="dubco">Dub.co</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="bitly">
-                        <CardHeader className='px-0'>
-                            <CardTitle>Bit.ly</CardTitle>
-                            <CardDescription>
-                                Generate a quick short link with bit.ly
-                            </CardDescription>
-                        </CardHeader>
-                        {/* <CardContent className="space-y-2 px-0"> */}
-                        {/* <Input
-                                placeholder="Enter your link"
-                                value={inputLink}
-                                required
+                <CardHeader className='px-0 py-0'>
+                    <CardTitle className='text-xl'>
+                        Dub.co
+                        <span className='text-sm text-slate-400 ml-2 font-normal'>
+                            (coming soon)
+                        </span>
+                    </CardTitle>
+                    <CardDescription>
+                        Shorten your link with dub.co and get full control over it.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2 p-0">
+                    {!shortedLink ? (
+                        <>
+                            <Input
+                                type='text'
+                                className='select-none'
+                                placeholder="Paste your link here"
+                                value={shortUrlInfo.url}
                                 readOnly
-                            /> */}
-                        {/* </CardContent> */}
-                        <CardFooter className='p-0'>
-                            {/* {isShortUrl ? (
+                            />
+                            <Input
+                                name="shortLink"
+                                type='text'
+                                placeholder="Short link"
+                                onChange={handleChange}
+                            />
+                            <Input
+                                name='password'
+                                type='password'
+                                placeholder="Password"
+                                onChange={handleChange}
+                            />
+                            <Button
+                                disabled={isLoading}
+                                onClick={handleSubmit}
+                                className='w-full'
+                            >
+                                {isLoading ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                                        Creating
+                                    </>
+                                ) : 'Create short link'}
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Input
+                                type='text'
+                                value={shortedLink}
+                                readOnly
+                            />
+                            <div className="flex gap-3 w-full justify-between items-center">
                                 <Button
+                                    disabled={isLoading}
+                                    variant={'destructive'}
                                     className="w-full"
-                                    onClick={() => {
-                                        copyToClipboard()
-                                        setHasCopied(true);
-                                    }}
-                                >
-                                    {
-                                        hasCopied
-                                            ? (
-                                                <>
-                                                    <Check className="mr-2 h-4 w-4" />
-                                                    Copied
-                                                </>
-                                            )
-                                            : (
-                                                <>
-                                                    <Copy className="mr-2 h-4 w-4" />
-                                                    Copy Link
-                                                </>
-                                            )
-                                    }
-                                </Button>
-                            ) : (
-                                <Button
-                                    className="w-full"
-                                    onClick={handleShortLink}
+                                    onClick={handleDelete}
                                 >
                                     {isLoading ? (
-                                        <Loader2
-                                            className="mr-2 h-4 w-4 animate-spin"
-                                            aria-hidden="true"
-                                        />
-                                    ) : (
-
-                                        "Create short url"
-                                    )}
-
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                                            Deleting
+                                        </>
+                                    ) : <>
+                                        <Trash2 className="mr-2 h-4 w-4" />
+                                        Delete
+                                    </>
+                                    }
                                 </Button>
-                            )} */}
-                            <Link
-                                target='_blank'
-                                href="https://bitly.com/"
-                                className={cn(buttonVariants(), 'w-full')}
-                            >
-                                Visit website
-                            </Link>
-                        </CardFooter>
-                    </TabsContent>
-                    <TabsContent value="dubco">
-                        <CardHeader className='px-0'>
-                            <CardTitle>Dub.co</CardTitle>
-                            <CardDescription>
-                                Shorten your link with dub.co and get full control over it.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-2 p-0">
-                            <Link
-                                target='_blank'
-                                href="https://dub.co/"
-                                className={cn(buttonVariants(), 'w-full')}
-                            >
-                                Visit website
-                            </Link>
-                        </CardContent>
-                    </TabsContent>
-                </Tabs>
+                                <Button
+                                    disabled={isLoading}
+                                    className="w-full"
+                                    onClick={copyToClipboard}
+                                >
+                                    {hasCopied ? (
+                                        <>
+                                            <Check className="mr-2 h-4 w-4" />
+                                            Copied
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Copy className="mr-2 h-4 w-4" />
+                                            Copy Link
+                                        </>
+                                    )}
+                                </Button>
+                            </div>
+                        </>
+                    )}
+                </CardContent>
             </DialogContent>
-        </Dialog>
-
+        </Dialog >
     )
 }

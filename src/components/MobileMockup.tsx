@@ -60,7 +60,7 @@ const MobileMockup: React.FC<MobileMockupProps> = React.memo(() => {
             )}>
                 {
                     isEmpty
-                        ? <div className='bg-white w-full text-sm text-muted-foreground h-full flex justify-center items-center z-20'>Nothing to show...</div>
+                        ? <div className='bg-white w-full text-sm text-muted-foreground h-full flex justify-center items-center z-20'>No information.</div>
                         : (
                             <>
                                 {!isEmpty && selectedBgComponent}

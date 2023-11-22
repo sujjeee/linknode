@@ -1,5 +1,5 @@
-import '../styles/globals.css'
-import type { Metadata } from 'next'
+import '@/styles/globals.css'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { siteConfig } from './page'
 import { Providers } from '@/components/Provider'
@@ -43,10 +43,6 @@ export const metadata: Metadata = {
     },
   ],
   creator: "sujjeee",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -66,6 +62,14 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+}
+
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 }
 
 export default function RootLayout({
