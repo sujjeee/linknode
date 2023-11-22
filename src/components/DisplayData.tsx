@@ -36,7 +36,7 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
     };
 
     return (
-        <main className="p-2 h-full w-full space-y-8 max-w-lg mx-auto overflow-y-scroll hide_scrollbar">
+        <div className="p-2 h-full w-full space-y-8 max-w-lg mx-auto overflow-y-scroll hide_scrollbar">
             <div className="text-center z-50">
                 {acc.i && (
                     <Avatar className="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto">
@@ -102,7 +102,7 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
                     />
                 ))}
             </ul>
-        </main>
+        </div>
     )
 }
 

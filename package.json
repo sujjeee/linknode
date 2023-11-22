@@ -9,21 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/modifiers": "^6.0.1",
     "@dnd-kit/sortable": "^7.0.2",
-    "@dnd-kit/utilities": "^3.2.1",
-    "@radix-ui/react-avatar": "^1.0.3",
-    "@radix-ui/react-dialog": "^1.0.4",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
-    "@radix-ui/react-scroll-area": "^1.0.4",
+    "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@vercel/analytics": "^1.0.2",
-    "@vercel/og": "^0.5.17",
+    "@vercel/analytics": "^1.1.1",
+    "@vercel/og": "^0.5.20",
     "autoprefixer": "10.4.15",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -36,12 +36,12 @@
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sonner": "^0.7.0",
+    "sonner": "^0.7.4",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
-    "vaul": "^0.4.5"
+    "vaul": "^0.4.6"
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1"
