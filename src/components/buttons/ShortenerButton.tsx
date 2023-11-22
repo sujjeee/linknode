@@ -68,14 +68,15 @@ export default function ShortenerButton() {
 
             const response = await createShortLink(shortUrlInfo);
 
-            if (!response) {
-                throw new Error('Error creating link');
+            if (!response.success) {
+                toast.error(response.error)
+                return
             }
 
             toast.success('Link created successfully!');
 
             setSomeResponseInfo(response);
-            setShortedLink(`https://${env.NEXT_PUBLIC_BASE_SHORT_DOMAIN}/${response.key}`);
+            setShortedLink(`https://${env.NEXT_PUBLIC_BASE_SHORT_DOMAIN}/${response.data.key}`);
         } catch (error) {
             catchError(error)
         } finally {
@@ -89,8 +90,9 @@ export default function ShortenerButton() {
 
             const response = await deleteLink(someResponseInfo);
 
-            if (!response) {
-                throw new Error('Error deleting link');
+            if (!response.success) {
+                toast.error(response.error)
+                return
             }
 
             toast.success('Link deleted successfully!');

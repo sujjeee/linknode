@@ -23,17 +23,33 @@ export default async function createShortLink(shortUrlInfo: CreateShortLink) {
 
         switch (response.status) {
             case 409:
-                throw new Error('Short link already exists.');
+                return {
+                    success: false,
+                    error: 'Short link already exists.',
+                    data: null
+                };
             case 429:
-                throw new Error('Too many requests. Please try again later.');
+                return {
+                    success: false,
+                    error: 'Too many requests. Please try again later.',
+                    data: null
+                };
             default:
                 if (!response.ok) {
-                    throw new Error('Something went wrong, please try again later.');
+                    return {
+                        success: false,
+                        error: 'Something went wrong, please try again later.',
+                        data: null
+                    };
                 }
         }
 
         const data = await response.json();
-        return data;
+        return {
+            success: true,
+            error: null,
+            data: data
+        };
 
     } catch (error: any) {
         throw new Error(`${error.message}`);
