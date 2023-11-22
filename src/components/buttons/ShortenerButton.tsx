@@ -75,7 +75,7 @@ export default function ShortenerButton() {
 
             toast.success('Link created successfully!');
 
-            setSomeResponseInfo(response);
+            setSomeResponseInfo(response.data);
             setShortedLink(`https://${env.NEXT_PUBLIC_BASE_SHORT_DOMAIN}/${response.data.key}`);
         } catch (error) {
             catchError(error)
