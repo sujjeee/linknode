@@ -1,7 +1,7 @@
 // origial code: https://gist.github.com/threepointone/e73a87f7bbbebc78cf71744469ec5a15
 
 import { Suspense, useLayoutEffect, useRef, useState } from 'react';
-import IframeLoader from './IframeLoader';
+import IframeLoader from '@/components/IframeLoader';
 
 type IFrameProps = React.ComponentPropsWithRef<'iframe'> & {
     fallback?: JSX.Element;

@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
-import { siteConfig } from './page'
+import { siteConfig } from '@/app/page'
 import { Providers } from '@/components/Provider'
 import { Analytics } from '@vercel/analytics/react';
 
@@ -34,7 +34,9 @@ export const metadata: Metadata = {
     "free linktree",
     "link in bio",
     "link in bio instagram",
-    "linktree"
+    "linktree",
+    "dub.co",
+    "dub"
   ],
   authors: [
     {

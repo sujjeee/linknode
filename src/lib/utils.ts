@@ -1,5 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { customAlphabet } from 'nanoid';
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -22,4 +24,10 @@ export function catchError(err: unknown) {
   } else {
     return toast.error("Something went wrong, please try again later.")
   }
+}
+
+export function generateNanoId() {
+  const alphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
+  const nanoid = customAlphabet(alphabet, 10);
+  return nanoid(7)
 }

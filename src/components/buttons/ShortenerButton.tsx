@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useData } from '@/lib/context/LinkContext'
 import { toast } from 'sonner'
-import createShortLink from '@/app/_actions/shortlink'
 import deleteLink from '@/app/_actions/deletelink'
 import {
     Check,
@@ -27,6 +26,10 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { Label } from '@radix-ui/react-label'
+import { PasswordInput } from '@/components/ui/password-input'
+import { ShortLinkInput } from '@/components/ui/shortlink-input'
+import createShortLink from '@/app/_actions/shortlink'
 
 export default function ShortenerButton() {
     const { data } = useData()
@@ -37,7 +40,7 @@ export default function ShortenerButton() {
         shortLink: '',
         password: '',
     });
-    const [shortedLink, setShortedLink] = React.useState('')
+    const [shortedLink, setShortedLink] = React.useState<string | null>(null)
     const [someResponseInfo, setSomeResponseInfo] = React.useState<any | null>(null)
     const [hasCopied, setHasCopied] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false)
@@ -97,6 +100,7 @@ export default function ShortenerButton() {
             catchError(error)
         } finally {
             setIsLoading(false);
+            setShortedLink(null)
         }
     }
 
@@ -106,6 +110,13 @@ export default function ShortenerButton() {
             setHasCopied(true);
         }
     }, [shortedLink]);
+
+    const handleShortlinkChange = (shortlink: string) => {
+        setShortUrlInfo((prevInfo) => ({
+            ...prevInfo,
+            shortLink: shortlink,
+        }));
+    };
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -118,10 +129,7 @@ export default function ShortenerButton() {
             <DialogContent className="sm:max-w-[450px]" showClose={false}>
                 <CardHeader className='px-0 py-0'>
                     <CardTitle className='text-xl'>
-                        Dub.co
-                        <span className='text-sm text-slate-400 ml-2 font-normal'>
-                            (coming soon)
-                        </span>
+                        Powered by Dub.co
                     </CardTitle>
                     <CardDescription>
                         Shorten your link with dub.co and get full control over it.
@@ -129,30 +137,54 @@ export default function ShortenerButton() {
                 </CardHeader>
                 <CardContent className="space-y-2 p-0">
                     {!shortedLink ? (
-                        <>
-                            <Input
-                                type='text'
-                                className='select-none'
-                                placeholder="Paste your link here"
-                                value={shortUrlInfo.url}
-                                readOnly
-                            />
-                            <Input
-                                name="shortLink"
-                                type='text'
-                                placeholder="Short link"
-                                onChange={handleChange}
-                            />
-                            <Input
-                                name='password'
-                                type='password'
-                                placeholder="Password"
-                                onChange={handleChange}
-                            />
+                        <div className="grid gap-2">
+                            <div>
+                                <Label
+                                    htmlFor="url"
+                                    className='text-sm font-medium'>
+                                    Destination URL
+                                </Label>
+                                <Input
+                                    name='url'
+                                    type='text'
+                                    className='select-none'
+                                    placeholder="Paste your link here"
+                                    value={shortUrlInfo.url}
+                                    readOnly
+                                />
+                            </div>
+                            <div>
+                                <Label
+                                    htmlFor='shortLink'
+                                    className='text-sm font-medium'>
+                                    Short link
+                                </Label>
+                                <ShortLinkInput
+                                    type='text'
+                                    name="shortLink"
+                                    placeholder="mylinks"
+                                    value={shortUrlInfo.shortLink}
+                                    onChange={handleChange}
+                                    onShortlinkChange={handleShortlinkChange}
+                                />
+                            </div>
+                            <div>
+                                <Label
+                                    htmlFor='password'
+                                    className='text-sm font-medium'>
+                                    Password
+                                </Label>
+                                <PasswordInput
+                                    name='password'
+                                    placeholder='*****'
+                                    value={shortUrlInfo.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
                             <Button
                                 disabled={isLoading}
                                 onClick={handleSubmit}
-                                className='w-full'
+                                className='w-full mt-2'
                             >
                                 {isLoading ? (
                                     <>
@@ -161,7 +193,7 @@ export default function ShortenerButton() {
                                     </>
                                 ) : 'Create short link'}
                             </Button>
-                        </>
+                        </div>
                     ) : (
                         <>
                             <Input

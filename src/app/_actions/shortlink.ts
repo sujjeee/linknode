@@ -1,11 +1,7 @@
 'use server'
 
 import { env } from "@/env.mjs"
-import { customAlphabet } from 'nanoid';
-import { toast } from "sonner";
-
-const alphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
-const nanoid = customAlphabet(alphabet, 10);
+import { generateNanoId } from "@/lib/utils";
 
 export default async function createShortLink(shortUrlInfo: CreateShortLink) {
     try {
@@ -18,7 +14,7 @@ export default async function createShortLink(shortUrlInfo: CreateShortLink) {
             body: JSON.stringify({
                 domain: env.NEXT_PUBLIC_BASE_SHORT_DOMAIN,
                 url: shortUrlInfo.url,
-                key: shortUrlInfo.shortLink.length > 0 ? shortUrlInfo.shortLink : nanoid(7),
+                key: shortUrlInfo.shortLink.length > 0 ? shortUrlInfo.shortLink : generateNanoId(),
                 password: shortUrlInfo.password
             })
         };
@@ -38,6 +34,7 @@ export default async function createShortLink(shortUrlInfo: CreateShortLink) {
 
         const data = await response.json();
         return data;
+
     } catch (error: any) {
         throw new Error(`${error.message}`);
     }
