@@ -25,7 +25,7 @@ const MobileMockup = React.memo(() => {
 
   return (
     <div className="relative z-50 mx-auto h-[700px] w-[350px] min-w-[350px] rounded-[42px] border-[14px] border-primary bg-primary shadow-xl ">
-      <div className="absolute left-1/2 top-0 z-50 h-[18px] w-[148px] translate-x-[-1/2] rounded-b-[1rem] bg-primary"></div>
+      <div className="absolute left-1/2 top-0 z-50 h-[18px] w-[148px] translate-x-[-50%] rounded-b-[1rem] bg-primary"></div>
       <div className="absolute left-[-17px] top-[124px] z-50 h-[46px] w-[4px] rounded-l-lg bg-primary"></div>
       <div className="absolute left-[-17px] top-[178px] z-50 h-[46px] w-[4px] rounded-l-lg bg-primary"></div>
       <div className="absolute right-[-17px] top-[142px] z-50 h-[64px] w-[4px] rounded-r-lg bg-primary"></div>

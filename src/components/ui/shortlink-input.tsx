@@ -29,7 +29,7 @@ const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
     return (
       <div className="relative">
         <Input className={cn('pr-10', className)} ref={ref} {...props} />
-        <div className="absolute  right-0 top-2/4 flex -translate-y-2/4 items-center justify-center gap-3 px-3">
+        <div className="absolute  right-0 top-2/4 flex translate-y-[-50%] items-center justify-center gap-3 px-3">
           {nanoId && (
             <Button
               type="button"

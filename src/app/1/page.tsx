@@ -4,7 +4,6 @@ import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets';
 import DisplayData from '@/components/DisplayData';
 import DataLoading from '@/app/1/loading';
 import LinkPageError from '@/app/1/error';
-import SiteFooter from '@/components/layouts/SiteFooter';
 
 interface SearchParamsProps {
   searchParams: {
@@ -20,7 +19,7 @@ export function generateMetadata({ searchParams }: SearchParamsProps) {
   const data = decodeData(queryData);
 
   if (!data) return null;
-  
+
   return {
     title: `${data.n}'s`,
     description: `Find all of ${data.n}'s links in one place.`,
@@ -51,7 +50,7 @@ export default function page({ searchParams }: SearchParamsProps) {
   if (!searchParams.data) return NotFound();
 
   const data = decodeData(searchParams.data);
-  
+
   if (!data) return <LinkPageError />;
 
   const selectedBgOption = data

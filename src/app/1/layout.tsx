@@ -7,7 +7,7 @@ interface PagesLayoutProps {
 export default function LinksLayout({ children }: PagesLayoutProps) {
   return (
     <>
-      <main className="flex-1 mb-[10vh]">{children}</main>
+      <main className="mb-[10vh] flex-1">{children}</main>
       <SiteFooter />
     </>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SiteFooter() {
   return (
-    <footer className="fixed bottom-0 w-full backdrop-blur-md py-4 text-center text-sm">
+    <footer className="fixed bottom-0 w-full py-4 text-center text-sm backdrop-blur-md">
       <a
         href="https://linknode.vercel.app/"
         target="_blank"
