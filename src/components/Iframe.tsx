@@ -22,26 +22,26 @@ function IFrameImplementation(props: React.ComponentPropsWithRef<'iframe'>) {
     promise: null | Promise<void>;
     resolve: () => void;
     reject: () => void;
-}>(null);
+  }>(null);
 
-/* eslint-disable @typescript-eslint/no-unused-vars  */
-const [_, triggerLoad] = useState(false)
+  /* eslint-disable @typescript-eslint/no-unused-vars  */
+  const [_, triggerLoad] = useState(false);
 
-if (awaiter.current?.promise) {
+  if (awaiter.current?.promise) {
     throw awaiter.current.promise;
-}
+  }
 
-useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (awaiter.current === null) {
-        // @ts-expect-error: no need for null check
-        awaiter.current = {}
-        // @ts-expect-error: no need for null check
-        awaiter.current.promise = new Promise<void>((resolve, reject) => {
-            if (awaiter.current) {
-                Object.assign(awaiter.current, { resolve, reject });
-            }
-        });
-        triggerLoad(true)
+      // @ts-expect-error: no need for null check
+      awaiter.current = {};
+      // @ts-expect-error: no need for null check
+      awaiter.current.promise = new Promise<void>((resolve, reject) => {
+        if (awaiter.current) {
+          Object.assign(awaiter.current, { resolve, reject });
+        }
+      });
+      triggerLoad(true);
     }
   }, []);
   const { title } = props;

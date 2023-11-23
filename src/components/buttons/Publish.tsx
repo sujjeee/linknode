@@ -22,7 +22,6 @@ interface PublishProps {}
 
 const Publish: FC<PublishProps> = ({}) => {
   const { data } = useData();
-
   const isEmpty = isEmptyValues(data);
   const [inputLink, setInputLink] = React.useState<string>('');
   const [hasCopied, setHasCopied] = React.useState<boolean>(false);
@@ -72,7 +71,7 @@ const Publish: FC<PublishProps> = ({}) => {
         </DialogHeader>
         {!isEmpty ? (
           <>
-            <Input type="text" value={inputLink} readOnly />
+            <Input type="text" value={inputLink} readOnly autoFocus={false} />
             <DialogFooter>
               <div className="flex w-full items-center justify-between gap-3">
                 <Button
