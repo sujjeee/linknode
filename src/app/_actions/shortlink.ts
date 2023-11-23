@@ -1,57 +1,66 @@
-'use server'
+'use server';
 
-import { env } from "@/env.mjs"
-import { generateNanoId } from "@/lib/utils";
+import { env } from '@/env.mjs';
+import { catchError, generateNanoId } from '@/lib/utils';
+import type { APIResponse, CreateShortLinkProps } from '@/types';
 
-export default async function createShortLink(shortUrlInfo: CreateShortLink) {
-    try {
-        const options = {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${env.DUB_DOT_CO_TOKEN}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                domain: env.NEXT_PUBLIC_BASE_SHORT_DOMAIN,
-                url: shortUrlInfo.url,
-                key: shortUrlInfo.shortLink.length > 0 ? shortUrlInfo.shortLink : generateNanoId(),
-                password: shortUrlInfo.password
-            })
-        };
+export default async function createShortLink(
+  shortUrlInfo: CreateShortLinkProps,
+) {
+  try {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.DUB_DOT_CO_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        domain: env.NEXT_PUBLIC_BASE_SHORT_DOMAIN,
+        url: shortUrlInfo.url,
+        key:
+          shortUrlInfo.shortLink.length > 0
+            ? shortUrlInfo.shortLink
+            : generateNanoId(),
+        password: shortUrlInfo.password,
+      }),
+    };
 
-        const response = await fetch(`https://api.dub.co/links?projectSlug=${env.DUB_DOT_CO_SLUG}`, options);
+    const response = await fetch(
+      `https://api.dub.co/links?projectSlug=${env.DUB_DOT_CO_SLUG}`,
+      options,
+    );
 
-        switch (response.status) {
-            case 409:
-                return {
-                    success: false,
-                    error: 'Short link already exists.',
-                    data: null
-                };
-            case 429:
-                return {
-                    success: false,
-                    error: 'Too many requests. Please try again later.',
-                    data: null
-                };
-            default:
-                if (!response.ok) {
-                    return {
-                        success: false,
-                        error: 'Something went wrong, please try again later.',
-                        data: null
-                    };
-                }
-        }
-
-        const data = await response.json();
+    switch (response.status) {
+      case 409:
         return {
-            success: true,
-            error: null,
-            data: data
+          success: false,
+          error: 'Short link already exists.',
+          data: null,
         };
-
-    } catch (error: any) {
-        throw new Error(`${error.message}`);
+      case 429:
+        return {
+          success: false,
+          error: 'Too many requests. Please try again later.',
+          data: null,
+        };
+      default:
+        if (!response.ok) {
+          return {
+            success: false,
+            error: 'Something went wrong, please try again later.',
+            data: null,
+          };
+        }
     }
+
+    const data = (await response.json()) as APIResponse;
+
+    return {
+      success: true,
+      error: null,
+      data: data,
+    };
+  } catch (error) {
+    catchError(error);
+  }
 }

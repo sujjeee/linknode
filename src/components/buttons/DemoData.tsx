@@ -1,19 +1,18 @@
-"use client"
-import React, { FC } from 'react'
-import { Button } from '@/components/ui/button'
-import { Play } from 'lucide-react'
-import { useData } from '@/lib/context/LinkContext'
+'use client';
 
-interface DemoDataProps { }
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Play } from 'lucide-react';
+import { useData } from '@/lib/context/LinkContext';
 
-const DemoData: FC<DemoDataProps> = ({ }) => {
-    const { showDemo } = useData()
-    return (
-        <Button className='w-full' onClick={showDemo}>
-            <Play className='mr-2 h-4 w-4' />
-            Demo
-        </Button>
-    )
-}
+const DemoData = ({}) => {
+  const { showDemo } = useData();
+  return (
+    <Button className="w-full" onClick={showDemo}>
+      <Play className="mr-2 h-4 w-4" />
+      Demo
+    </Button>
+  );
+};
 
-export default DemoData
+export default DemoData;

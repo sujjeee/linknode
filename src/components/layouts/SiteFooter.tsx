@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 export default function SiteFooter() {
-    return (
-        <footer className='text-center fixed py-4 bottom-0 w-full text-sm bg-white'>
-            <a href="https://linknode.vercel.app/" target='_blank' className='hover:underline underline-offset-2 text-slate-300 hover:text-slate-400'>
-                Made with linknode
-            </a>
-        </footer>
-    )
+  return (
+    <footer className="fixed bottom-0 w-full backdrop-blur-md py-4 text-center text-sm">
+      <a
+        href="https://linknode.vercel.app/"
+        target="_blank"
+        className="text-slate-300 underline-offset-2 hover:text-slate-400 hover:underline"
+      >
+        Made with linknode
+      </a>
+    </footer>
+  );
 }

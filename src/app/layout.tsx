@@ -1,53 +1,56 @@
-import '@/styles/globals.css'
-import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import { siteConfig } from '@/app/page'
-import { Providers } from '@/components/Provider'
+import '@/styles/globals.css';
+import type { Metadata, Viewport } from 'next';
+import { siteConfig } from '@/app/page';
+import { Providers } from '@/components/Provider';
 import { Analytics } from '@vercel/analytics/react';
+import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+export const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 // Original source: https://github.com/sadmann7/skateshop/blob/main/src/app/layout.tsx
 export const metadata: Metadata = {
-  metadataBase: new URL("https://linknode.vercel.app"),
+  metadataBase: new URL('https://linknode.vercel.app'),
   title: {
     default: siteConfig.name,
     template: `%s - LinkNode`,
   },
   description: siteConfig.description,
   verification: {
-    google: "5z2lDnQ6mdG9S2qZm74DNfOk3xdwLR-orzDHc5XiJxs"
+    google: '5z2lDnQ6mdG9S2qZm74DNfOk3xdwLR-orzDHc5XiJxs',
   },
   // added new keywords for seo
   keywords: [
-    "bitly url shortener",
-    "bitly link shortener",
-    "link shortener",
-    "url shortener",
-    "bitly link",
-    "tinyurls",
-    "bio for instagram",
-    "links",
-    "linknode",
-    "onelink",
-    "social links",
-    "free linktree",
-    "link in bio",
-    "link in bio instagram",
-    "linktree",
-    "dub.co",
-    "dub"
+    'bitly url shortener',
+    'bitly link shortener',
+    'link shortener',
+    'url shortener',
+    'bitly link',
+    'tinyurls',
+    'bio for instagram',
+    'links',
+    'linknode',
+    'onelink',
+    'social links',
+    'free linktree',
+    'link in bio',
+    'link in bio instagram',
+    'linktree',
+    'dub.co',
+    'dub',
   ],
   authors: [
     {
-      name: "sujjeee",
-      url: "https://github.com/sujjeee",
+      name: 'sujjeee',
+      url: 'https://github.com/sujjeee',
     },
   ],
-  creator: "sujjeee",
+  creator: 'sujjeee',
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -55,38 +58,36 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og-image.png`],
-    creator: "@sujjeeee",
+    creator: '@sujjeeee',
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: '/favicon.ico',
   },
-}
+};
 
 export const viewport: Viewport = {
-  colorScheme: "dark light",
+  colorScheme: 'dark light',
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
