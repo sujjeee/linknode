@@ -44,10 +44,14 @@ export interface SocialLinkProviderProps {
   id: keyof typeof socialLinksData;
 }
 
-export interface CreateShortLinkProps {
+export interface ShortLinkProps {
   url: string;
   shortLink: string;
   password: string;
+  authorization?: string | null;
+  projectSlug?: string | null;
+  domain?: string | null;
+  rewrite?: boolean;
 }
 
 export interface APIResponse {
