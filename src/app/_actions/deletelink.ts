@@ -3,21 +3,41 @@
 import { env } from '@/env.mjs';
 import { catchError } from '@/lib/utils';
 
-export default async function deleteLink(shortedLinkId: string | undefined) {
+export default async function deleteLink({
+  id,
+  authorization,
+  projectSlug,
+}: {
+  id: string;
+  authorization: string | null;
+  projectSlug: string | null;
+}) {
   try {
+    const getAuthorization = authorization || env.DUB_DOT_CO_TOKEN;
+    const getProjectSlug = projectSlug || env.DUB_DOT_CO_SLUG;
+
     const options = {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${env.DUB_DOT_CO_TOKEN}`,
+        Authorization: `Bearer ${getAuthorization}`,
       },
+      cache: 'no-store' as RequestCache,
     };
 
     const response = await fetch(
-      `https://api.dub.co/links/${shortedLinkId}?projectSlug=${env.DUB_DOT_CO_SLUG}`,
+      `https://api.dub.co/links/${id}?projectSlug=${getProjectSlug}`,
       options,
     );
 
     switch (response.status) {
+      case 401:
+      case 404:
+      case 403:
+        return {
+          success: false,
+          error: 'Unauthorized or invalid credentails.',
+          data: null,
+        };
       case 404:
         return {
           success: false,
@@ -32,7 +52,7 @@ export default async function deleteLink(shortedLinkId: string | undefined) {
         if (!response.ok) {
           return {
             success: false,
-            error: 'Something went wrong, please try again later.',
+            error: `Error: ${response.statusText}`,
           };
         }
     }

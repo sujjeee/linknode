@@ -13,6 +13,13 @@ import { PasswordInput } from '@/components/ui/password-input';
 import { ShortLinkInput } from '@/components/ui/shortlink-input';
 import createShortLink from '@/app/_actions/shortlink';
 import type { APIResponse, DataProps } from '@/types';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface ShortLinkFormProps {
   data: DataProps;
@@ -21,6 +28,10 @@ interface ShortLinkFormProps {
 
 const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
   const [shortUrlInfo, setShortUrlInfo] = React.useState({
+    authorization: null,
+    projectSlug: null,
+    domain: null,
+    rewrite: false,
     url: '',
     shortLink: '',
     password: '',
@@ -80,8 +91,16 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
   async function handleDelete() {
     try {
       setIsLoading(true);
+      if (!someResponseInfo?.id) {
+        toast.error('Invalid parameters');
+        return;
+      }
 
-      const response = await deleteLink(someResponseInfo?.id);
+      const response = await deleteLink({
+        id: someResponseInfo?.id,
+        authorization: shortUrlInfo?.authorization ?? null,
+        projectSlug: shortUrlInfo?.projectSlug ?? null,
+      });
 
       if (!response) {
         toast.error('No response received');
@@ -122,10 +141,56 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
     }));
   };
 
+  const handleLinkCloaking = (selectedValue: string) => {
+    setShortUrlInfo((prevInfo) => ({
+      ...prevInfo,
+      rewrite: selectedValue === 'true',
+    }));
+  };
+
   return (
     <>
       {!shortedLink ? (
         <div className="grid gap-2">
+          <div>
+            <Label htmlFor="authorization" className="text-sm font-medium">
+              Authorization key
+            </Label>
+            <Input
+              name="authorization"
+              type="text"
+              className="select-none"
+              placeholder="9dY7sFgT2Rb4EaZpL1oQxUwC"
+              value={shortUrlInfo.authorization || ''}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <Label htmlFor="projectSlug" className="text-sm font-medium">
+              Project Slug
+            </Label>
+            <Input
+              name="projectSlug"
+              type="text"
+              className="select-none"
+              placeholder="api"
+              value={shortUrlInfo.projectSlug || ''}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <Label htmlFor="domain" className="text-sm font-medium">
+              Custom Domain
+            </Label>
+            <Input
+              name="domain"
+              type="text"
+              className="select-none"
+              placeholder="url.codebustar.com"
+              value={shortUrlInfo.domain || ''}
+              onChange={handleChange}
+            />
+          </div>
           <div>
             <Label htmlFor="url" className="text-sm font-medium">
               Destination URL
@@ -163,6 +228,23 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
               value={shortUrlInfo.password}
               onChange={handleChange}
             />
+          </div>
+          <div>
+            <Label htmlFor="link_cloaking" className="text-sm font-medium">
+              Link cloaking
+            </Label>
+            <Select
+              defaultValue="false"
+              onValueChange={(value) => handleLinkCloaking(value)}
+            >
+              <SelectTrigger id="link_cloaking">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="false">False</SelectItem>
+                <SelectItem value="true">True</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <Button
             disabled={isLoading}
