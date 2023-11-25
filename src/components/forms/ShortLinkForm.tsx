@@ -288,9 +288,9 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
           </Button>
         </div>
       ) : (
-        <>
+        <div className="grid gap-2">
           <Input type="text" value={shortedLink} readOnly />
-          <div className="flex w-full items-center justify-between gap-3">
+          <div className="flex w-full items-center justify-between gap-2">
             <Button
               disabled={isLoading}
               variant={'destructive'}
@@ -330,7 +330,7 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
               )}
             </Button>
           </div>
-        </>
+        </div>
       )}
     </>
   );
