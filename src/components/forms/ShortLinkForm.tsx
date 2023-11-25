@@ -12,7 +12,7 @@ import { Label } from '@radix-ui/react-label';
 import { PasswordInput } from '@/components/ui/password-input';
 import { ShortLinkInput } from '@/components/ui/shortlink-input';
 import createShortLink from '@/app/_actions/shortlink';
-import type { APIResponse, DataProps, ShortLinkProps } from '@/types';
+import type { APIResponse, DataProps } from '@/types';
 import {
   Select,
   SelectContent,
@@ -20,6 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { AuthorizationInput } from '@/components/ui/authorization-input';
+import { useShortener } from '@/lib/context/ShortLinkContext';
 
 interface ShortLinkFormProps {
   data: DataProps;
@@ -27,15 +29,7 @@ interface ShortLinkFormProps {
 }
 
 const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
-  const [shortUrlInfo, setShortUrlInfo] = React.useState<ShortLinkProps>({
-    authorization: null,
-    projectSlug: null,
-    domain: null,
-    rewrite: false,
-    url: '',
-    shortLink: '',
-    password: '',
-  });
+  const { shortUrlInfo, setShortUrlInfo } = useShortener();
 
   const [shortedLink, setShortedLink] = React.useState<string | null>(null);
   const [someResponseInfo, setSomeResponseInfo] =
@@ -50,6 +44,8 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
       ...prevInfo,
       url: url,
     }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,11 +55,12 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
       [name]: value,
     }));
   };
-  
+
   async function handleSubmit() {
     if (shortUrlInfo.authorization !== null) {
-      if (shortUrlInfo.authorization &&
-        shortUrlInfo.authorization.length < 10 ||
+      if (
+        (shortUrlInfo.authorization &&
+          shortUrlInfo.authorization.length < 10) ||
         shortUrlInfo.domain === null ||
         shortUrlInfo.projectSlug === null
       ) {
@@ -146,13 +143,6 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
     }
   }, [shortedLink]);
 
-  const handleShortlinkChange = (shortlink: string) => {
-    setShortUrlInfo((prevInfo) => ({
-      ...prevInfo,
-      shortLink: shortlink,
-    }));
-  };
-
   const handleLinkCloaking = (selectedValue: string) => {
     setShortUrlInfo((prevInfo) => ({
       ...prevInfo,
@@ -172,7 +162,7 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
                 <span className=" text-destructive ">*</span>
               )}
             </Label>
-            <Input
+            <AuthorizationInput
               name="authorization"
               type="text"
               className="select-none"
@@ -238,7 +228,6 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
               placeholder="mylinks"
               value={shortUrlInfo.shortLink}
               onChange={handleChange}
-              onShortlinkChange={handleShortlinkChange}
             />
           </div>
           <div>

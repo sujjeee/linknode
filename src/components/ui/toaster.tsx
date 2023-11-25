@@ -1,7 +1,14 @@
 'use client';
 
+import useWindow from '@/hooks/useWindow';
 import { Toaster as RadToaster } from 'sonner';
 
 export function Toaster() {
-  return <RadToaster position="bottom-right" richColors />;
+  const { isMobile } = useWindow();
+  return (
+    <RadToaster
+      position={isMobile ? 'top-center' : 'bottom-right'}
+      richColors
+    />
+  );
 }
