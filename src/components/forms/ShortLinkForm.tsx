@@ -59,16 +59,17 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
       [name]: value,
     }));
   };
-
+  
   async function handleSubmit() {
-    if (
-      !shortUrlInfo.authorization ||
-      shortUrlInfo.authorization.length < 10 ||
-      !shortUrlInfo.domain ||
-      !shortUrlInfo.projectSlug
-    ) {
-      toast.error('Enter valid credentials.');
-      return;
+    if (shortUrlInfo.authorization !== null) {
+      if (shortUrlInfo.authorization &&
+        shortUrlInfo.authorization.length < 10 ||
+        shortUrlInfo.domain === null ||
+        shortUrlInfo.projectSlug === null
+      ) {
+        toast.error('Enter valid credentials.');
+        return;
+      }
     }
 
     try {
