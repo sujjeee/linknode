@@ -4,17 +4,20 @@ import React from 'react';
 import { isEmptyValues } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useData } from '@/lib/context/LinkContext';
-import { Info, LinkIcon } from 'lucide-react';
+import { Info, LinkIcon, X } from 'lucide-react';
 import ShortLinkForm from '@/components/forms/ShortLinkForm';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger,DialogClose } from '@/components/ui/dialog';
 import {
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import useWindow from '@/hooks/useWindow';
 
 export default function ShortenerButton() {
+  
+  const { isMobile } = useWindow();
   const { data } = useData();
   const isEmpty = isEmptyValues(data);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,10 +42,19 @@ export default function ShortenerButton() {
         <CardHeader className="p-6  pb-0">
           <CardTitle className="flex select-none items-center justify-between text-xl">
             Powered by Dub.co
-            <Info
-              onClick={() => handleInfoClick('https://dub.co/')}
-              className="h-4 w-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
-            />
+            {isMobile ? (
+              <DialogClose>
+                <X
+                  onClick={() => DialogClose}
+                  className="h-4 w-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
+                />
+              </DialogClose>
+            ) : (
+              <Info
+                onClick={() => handleInfoClick('https://dub.co/')}
+                className="h-4 w-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
+              />
+            )}
           </CardTitle>
           <CardDescription>
             Shorten your link with dub.co and get full control over it.

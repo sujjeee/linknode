@@ -173,7 +173,7 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
               name="projectSlug"
               type="text"
               className="select-none"
-              placeholder="api"
+              placeholder="nodes"
               value={shortUrlInfo.projectSlug || ''}
               onChange={handleChange}
             />

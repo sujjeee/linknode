@@ -25,7 +25,6 @@ export default async function createShortLink(shortUrlInfo: ShortLinkProps) {
             : generateNanoId(),
         password: shortUrlInfo.password,
         rewrite: shortUrlInfo.rewrite, //(DEV)NOTE: rewrite gives 'Internal server error' as local host link can't be cloaked
-
       }),
       cache: 'no-store' as RequestCache,
     };
