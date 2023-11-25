@@ -6,7 +6,12 @@ import { Button } from '@/components/ui/button';
 import { useData } from '@/lib/context/LinkContext';
 import { Info, LinkIcon, X } from 'lucide-react';
 import ShortLinkForm from '@/components/forms/ShortLinkForm';
-import { Dialog, DialogContent, DialogTrigger,DialogClose } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogClose,
+} from '@/components/ui/dialog';
 import {
   CardContent,
   CardDescription,
@@ -16,7 +21,6 @@ import {
 import useWindow from '@/hooks/useWindow';
 
 export default function ShortenerButton() {
-  
   const { isMobile } = useWindow();
   const { data } = useData();
   const isEmpty = isEmptyValues(data);

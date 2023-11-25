@@ -12,7 +12,7 @@ import { Label } from '@radix-ui/react-label';
 import { PasswordInput } from '@/components/ui/password-input';
 import { ShortLinkInput } from '@/components/ui/shortlink-input';
 import createShortLink from '@/app/_actions/shortlink';
-import type { APIResponse, DataProps } from '@/types';
+import type { APIResponse, DataProps, ShortLinkProps } from '@/types';
 import {
   Select,
   SelectContent,
@@ -27,7 +27,7 @@ interface ShortLinkFormProps {
 }
 
 const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
-  const [shortUrlInfo, setShortUrlInfo] = React.useState({
+  const [shortUrlInfo, setShortUrlInfo] = React.useState<ShortLinkProps>({
     authorization: null,
     projectSlug: null,
     domain: null,
@@ -36,6 +36,7 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
     shortLink: '',
     password: '',
   });
+
   const [shortedLink, setShortedLink] = React.useState<string | null>(null);
   const [someResponseInfo, setSomeResponseInfo] =
     React.useState<APIResponse | null>(null);
@@ -60,6 +61,16 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
   };
 
   async function handleSubmit() {
+    if (
+      !shortUrlInfo.authorization ||
+      shortUrlInfo.authorization.length < 10 ||
+      !shortUrlInfo.domain ||
+      !shortUrlInfo.projectSlug
+    ) {
+      toast.error('Enter valid credentials.');
+      return;
+    }
+
     try {
       setIsLoading(true);
 
@@ -149,12 +160,16 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
   };
 
   return (
+    // TODO: add react-form-hook
     <>
       {!shortedLink ? (
         <div className="grid gap-2">
           <div>
             <Label htmlFor="authorization" className="text-sm font-medium">
               Authorization key
+              {shortUrlInfo.authorization != null && (
+                <span className=" text-destructive ">*</span>
+              )}
             </Label>
             <Input
               name="authorization"
@@ -168,6 +183,9 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
           <div>
             <Label htmlFor="projectSlug" className="text-sm font-medium">
               Project Slug
+              {shortUrlInfo.authorization != null && (
+                <span className=" text-destructive ">*</span>
+              )}
             </Label>
             <Input
               name="projectSlug"
@@ -181,6 +199,9 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
           <div>
             <Label htmlFor="domain" className="text-sm font-medium">
               Custom Domain
+              {shortUrlInfo.authorization != null && (
+                <span className=" text-destructive ">*</span>
+              )}
             </Label>
             <Input
               name="domain"
@@ -194,6 +215,7 @@ const ShortLinkForm: React.FC<ShortLinkFormProps> = ({ data, setIsOpen }) => {
           <div>
             <Label htmlFor="url" className="text-sm font-medium">
               Destination URL
+              <span className=" text-destructive ">*</span>
             </Label>
             <Input
               name="url"

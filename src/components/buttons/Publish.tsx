@@ -58,7 +58,6 @@ const Publish: FC<PublishProps> = ({}) => {
           Publish
         </Button>
       </DialogTrigger>
-
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex items-center">
