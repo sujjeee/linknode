@@ -149,7 +149,6 @@ const CreateShortlinkForm = ({}) => {
   async function onSubmit(data: Inputs) {
     try {
       setIsLoading(true);
-      console.log(data);
       const response = await createShortLink(data);
 
       if (!response) {
