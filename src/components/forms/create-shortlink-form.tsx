@@ -399,7 +399,6 @@ const CreateShortlinkForm = ({}) => {
           ) : (
             'Create short link'
           )}
-          Create short link
         </Button>
       </form>
     </Form>
