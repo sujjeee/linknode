@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { customAlphabet } from 'nanoid';
 import { encode, decode } from 'js-base64';
 import { toast } from 'sonner';
-import type { DataProps } from '@/types';
+import type { DataProps, ShortLinkProps } from '@/types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -50,4 +50,23 @@ export function isEmptyValues(obj: DataProps): boolean {
   }
 
   return true;
+}
+
+export function checkCustomCredentials(shortUrlInfo: ShortLinkProps) {
+  const { authorization, projectSlug, domain } = shortUrlInfo;
+  return Boolean(!authorization && !projectSlug && !domain);
+}
+
+export function checkValidCustomCredentials(shortUrlInfo: ShortLinkProps) {
+  const { authorization, projectSlug, domain } = shortUrlInfo;
+
+  if (authorization && projectSlug && domain) {
+    return true;
+  }
+
+  if (!authorization && !projectSlug && !domain) {
+    return true;
+  }
+
+  return false;
 }

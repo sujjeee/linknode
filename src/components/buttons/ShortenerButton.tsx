@@ -5,7 +5,6 @@ import { isEmptyValues } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useData } from '@/lib/context/LinkContext';
 import { Info, LinkIcon } from 'lucide-react';
-import ShortLinkForm from '@/components/forms/ShortLinkForm';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import {
   CardContent,
@@ -16,17 +15,15 @@ import {
 import useWindow from '@/hooks/useWindow';
 import { Drawer } from 'vaul';
 import { DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
+import CreateShortlinkForm from '@/components/forms/create-shortlink-form';
+import { useAPIResponse } from '@/lib/context/APIResponseContext';
+import DeleteShortlinkForm from '@/components/forms/delete-shortlink-form';
 
 export default function ShortenerButton() {
-  
   const { isDesktop } = useWindow();
   const { data } = useData();
   const isEmpty = isEmptyValues(data);
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const handleIsOpenChange = (newIsOpen: React.SetStateAction<boolean>) => {
-    setIsOpen(newIsOpen);
-  };
+  const { shortedLink, isOpen, setOpen } = useAPIResponse();
 
   const handleInfoClick = (link: string) => {
     window.open(link, '_blank');
@@ -35,7 +32,7 @@ export default function ShortenerButton() {
   return (
     <>
       {isDesktop ? (
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <Dialog open={isOpen} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button className="w-full">
               <LinkIcon className="mr-2 h-4 w-4" />
@@ -60,8 +57,10 @@ export default function ShortenerButton() {
                 <Button className="w-full">
                   Can&#39;t short link with empty fields!
                 </Button>
+              ) : shortedLink ? (
+                <DeleteShortlinkForm />
               ) : (
-                <ShortLinkForm data={data} setIsOpen={handleIsOpenChange} />
+                <CreateShortlinkForm />
               )}
             </CardContent>
           </DialogContent>
@@ -91,8 +90,10 @@ export default function ShortenerButton() {
               <Button className="w-full">
                 Can&#39;t short link with empty fields!
               </Button>
+            ) : shortedLink ? (
+              <DeleteShortlinkForm />
             ) : (
-              <ShortLinkForm data={data} setIsOpen={handleIsOpenChange} />
+              <CreateShortlinkForm />
             )}
           </DrawerContent>
         </Drawer.Root>

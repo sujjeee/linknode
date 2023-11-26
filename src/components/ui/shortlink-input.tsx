@@ -7,12 +7,18 @@ import { Button } from '@/components/ui/button';
 import { Input, type InputProps } from '@/components/ui/input';
 import { useShortener } from '@/lib/context/ShortLinkContext';
 
-interface ShortLinkInputProps extends InputProps {}
-
+interface ShortLinkInputProps extends InputProps {
+  onGlobalChange: (name: string, value?: string) => void;
+}
 const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, onGlobalChange, ...props }, ref) => {
     const [isNanoId, setIsNanoId] = React.useState(false);
-    const { setShortUrlInfo } = useShortener();
+    const { shortUrlInfo, setShortUrlInfo } = useShortener();
+
+    React.useEffect(() => {
+      onGlobalChange('shortLink', shortUrlInfo.shortLink);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shortUrlInfo.shortLink]);
 
     return (
       <div className="relative">
@@ -33,7 +39,6 @@ const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
               }}
             >
               <Trash2 className="h-4 w-4" aria-hidden="true" />
-
               <span className="sr-only">delete</span>
             </Button>
           )}
@@ -51,7 +56,6 @@ const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
             }}
           >
             <Shuffle className="h-4 w-4" aria-hidden="true" />
-
             <span className="sr-only">randomize</span>
           </Button>
         </div>
@@ -59,6 +63,7 @@ const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
     );
   },
 );
+
 ShortLinkInput.displayName = 'ShortLinkInput';
 
 export { ShortLinkInput };

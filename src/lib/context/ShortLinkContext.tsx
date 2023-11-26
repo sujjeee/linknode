@@ -15,9 +15,9 @@ export const ShortLinkProvider = ({
   children: React.ReactNode;
 }) => {
   const [shortUrlInfo, setShortUrlInfo] = useState<ShortLinkProps>({
-    authorization: null,
-    projectSlug: null,
-    domain: null,
+    authorization: '',
+    projectSlug: '',
+    domain: '',
     rewrite: false,
     url: '',
     shortLink: '',

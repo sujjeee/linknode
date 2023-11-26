@@ -46,11 +46,11 @@ export interface SocialLinkProviderProps {
 
 export interface ShortLinkProps {
   url: string;
-  shortLink: string;
-  password: string;
-  authorization?: string | null;
-  projectSlug?: string | null;
-  domain?: string | null;
+  shortLink?: string;
+  password?: string;
+  authorization?: string;
+  projectSlug?: string;
+  domain?: string;
   rewrite?: boolean;
 }
 
