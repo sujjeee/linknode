@@ -9,6 +9,7 @@ export default async function createShortLink(shortUrlInfo: ShortLinkProps) {
     const authorization = shortUrlInfo.authorization || env.DUB_DOT_CO_TOKEN;
     const projectSlug = shortUrlInfo.projectSlug || env.DUB_DOT_CO_SLUG;
     const domain = shortUrlInfo.domain || env.NEXT_PUBLIC_BASE_SHORT_DOMAIN;
+    const shortLink = shortUrlInfo.shortLink || generateNanoId();
 
     const options = {
       method: 'POST',
@@ -19,10 +20,7 @@ export default async function createShortLink(shortUrlInfo: ShortLinkProps) {
       body: JSON.stringify({
         domain: domain,
         url: shortUrlInfo.url,
-        key:
-          shortUrlInfo.shortLink.length > 0
-            ? shortUrlInfo.shortLink
-            : generateNanoId(),
+        key: shortLink,
         password: shortUrlInfo.password,
         rewrite: shortUrlInfo.rewrite, //(DEV)NOTE: rewrite gives 'Internal server error' as local host link can't be cloaked
       }),
