@@ -1,6 +1,7 @@
 'use client';
 
-import React, { type FC } from 'react';
+import React from 'react';
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { encodeData, isEmptyValues } from '@/lib/utils';
 import { useData } from '@/lib/context/LinkContext';
@@ -16,11 +17,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { toast } from 'sonner';
 
-interface PublishProps {}
-
-const Publish: FC<PublishProps> = ({}) => {
+export default function PublishButton() {
   const { data } = useData();
   const isEmpty = isEmptyValues(data);
   const [inputLink, setInputLink] = React.useState<string>('');
@@ -125,6 +123,4 @@ const Publish: FC<PublishProps> = ({}) => {
       </DialogContent>
     </Dialog>
   );
-};
-
-export default Publish;
+}

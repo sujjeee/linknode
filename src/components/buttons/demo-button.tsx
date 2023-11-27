@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 import { useData } from '@/lib/context/LinkContext';
 
-const DemoData = ({}) => {
+export default function DemoButton() {
   const { showDemo } = useData();
   return (
     <Button className="w-full" onClick={showDemo}>
@@ -13,6 +13,4 @@ const DemoData = ({}) => {
       Demo
     </Button>
   );
-};
-
-export default DemoData;
+}

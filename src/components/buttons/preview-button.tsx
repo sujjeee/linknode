@@ -1,17 +1,15 @@
 'use client';
 
-import React, { type FC } from 'react';
-import { Button } from '@/components/ui/button';
+import React from 'react';
 import { Drawer } from 'vaul';
-import { DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
+import { isEmptyValues } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import DisplayData from '@/components/DisplayData';
 import { useData } from '@/lib/context/LinkContext';
+import { DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { BACKGROUND_OPTIONS } from '@/components/backgrounds/background-snippets';
-import { isEmptyValues } from '@/lib/utils';
 
-interface PreviewButtonProps {}
-
-const PreviewButton: FC<PreviewButtonProps> = () => {
+export default function PreviewButton() {
   const { data } = useData();
 
   const [isEmpty, setIsEmpty] = React.useState<boolean>(false);
@@ -53,6 +51,4 @@ const PreviewButton: FC<PreviewButtonProps> = () => {
       </Drawer.Root>
     </div>
   );
-};
-
-export default PreviewButton;
+}

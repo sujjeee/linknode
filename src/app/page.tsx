@@ -1,16 +1,14 @@
 import React from 'react';
-import Link from 'next/link';
 import AdditionalLinksForm from '@/components/forms/AdditionalLinksForm';
 import ProfileForm from '@/components/forms/ProfileForm';
 import SocialLinksForm from '@/components/forms/SocialLinksForm';
 import MobileMockup from '@/components/MobileMockup';
-import PreviewButton from '@/components/buttons/PreviewButton';
-import DemoData from '@/components/buttons/DemoData';
-import { buttonVariants } from '@/components/ui/button';
-import Publish from '@/components/buttons/Publish';
-import { Github } from 'lucide-react';
-import ShortenerButton from '@/components/buttons/ShortenerButton';
+import PreviewButton from '@/components/buttons/preview-button';
+import DemoButton from '@/components/buttons/demo-button';
+import PublishButton from '@/components/buttons/publish-button';
+import ShortenerButton from '@/components/buttons/shortener-button';
 import BackgroundShell from '@/components/backgrounds/background-shell';
+import GithubButton from '@/components/buttons/github-button';
 
 export const siteConfig = {
   name: 'LinkNode - one page, many links.',
@@ -28,21 +26,13 @@ export default function Home() {
           <ProfileForm />
           <SocialLinksForm />
           <AdditionalLinksForm />
-
           <BackgroundShell />
 
           <div className="grid w-full grid-cols-2 items-center justify-center gap-2 md:grid-cols-4 ">
-            <DemoData />
-            <Publish />
+            <DemoButton />
+            <PublishButton />
             <ShortenerButton />
-            <Link
-              target="_blank"
-              href="https://github.com/sujjeee/linknode"
-              className={buttonVariants()}
-            >
-              <Github className="mr-2 h-4 w-4" />
-              Github
-            </Link>
+            <GithubButton />
           </div>
         </div>
       </section>
