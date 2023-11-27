@@ -8,14 +8,15 @@
 
 ### LinkNode is an open-source tool that helps you generate one link for all your links.
 
-
 ## Features ✨
 
 - Add as many links as you need ♾️
 - Cool icons for your social media links 😎
 - Choose your own icons for any other links 🔧
-- A demo preview to see how your page will turn out 👀
-- A short URL with bit.ly or dub.co API 🌐
+- Demo preview to see how your page will turn out 👀
+- URL shortener powered by Dub.co 🌐
+  - Custom domains support
+  - Link cloaking funtionality
 
 ## Tech Stacks 💻
 
@@ -48,9 +49,10 @@ yarn dev
 <!-- ## Environment Variables 🌎
 To use Bitly API need to add the following environment variables to your .env file:
 ```bash
-BITLY_API_KEY = 
-BITLY_GROUP_GUID = 
+BITLY_API_KEY =
+BITLY_GROUP_GUID =
 ``` -->
 
 ## Demo 👀
+
 Try demo <a href="https://dub.sh/linknode">LinkNode</a>
