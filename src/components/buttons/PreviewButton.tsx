@@ -6,7 +6,7 @@ import { Drawer } from 'vaul';
 import { DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import DisplayData from '@/components/DisplayData';
 import { useData } from '@/lib/context/LinkContext';
-import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets';
+import { BACKGROUND_OPTIONS } from '@/components/backgrounds/background-snippets';
 import { isEmptyValues } from '@/lib/utils';
 
 interface PreviewButtonProps {}

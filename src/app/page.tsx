@@ -10,7 +10,7 @@ import { buttonVariants } from '@/components/ui/button';
 import Publish from '@/components/buttons/Publish';
 import { Github } from 'lucide-react';
 import ShortenerButton from '@/components/buttons/ShortenerButton';
-import Background from '@/components/background/Background';
+import BackgroundShell from '@/components/backgrounds/background-shell';
 
 export const siteConfig = {
   name: 'LinkNode - one page, many links.',
@@ -29,7 +29,7 @@ export default function Home() {
           <SocialLinksForm />
           <AdditionalLinksForm />
 
-          <Background />
+          <BackgroundShell />
 
           <div className="grid w-full grid-cols-2 items-center justify-center gap-2 md:grid-cols-4 ">
             <DemoData />

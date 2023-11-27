@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useData } from '@/lib/context/LinkContext';
-import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets';
+import { BACKGROUND_OPTIONS } from '@/components/backgrounds/background-snippets';
 import { cn } from '@/lib/utils';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 

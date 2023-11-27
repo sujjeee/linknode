@@ -8,9 +8,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import BackgroundCard from '@/components/background/BackgroundCard';
+import BackgroundCard from '@/components/backgrounds/background-card';
 
-export default function Background() {
+export default function BackgroundShell() {
   return (
     <Card className="-mt-5 w-full">
       <CardHeader className="space-y-1">

@@ -3,7 +3,7 @@
 import React from 'react';
 import DisplayData from '@/components/DisplayData';
 import { useData } from '@/lib/context/LinkContext';
-import { BACKGROUND_OPTIONS } from '@/components/background/BgSnippets';
+import { BACKGROUND_OPTIONS } from '@/components/backgrounds/background-snippets';
 import { cn, isEmptyValues } from '@/lib/utils';
 
 const MobileMockup = React.memo(() => {
