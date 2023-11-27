@@ -231,7 +231,7 @@ const CreateShortlinkForm = ({}) => {
                       'border-destructive focus-visible:ring-destructive ':
                         error,
                     })}
-                    placeholder={error ? (error.message as string) : 'nodes'}
+                    placeholder={error ? (error.message as string) : 'biolinks'}
                     {...{
                       ...field,
                       value: shortUrlInfo.projectSlug,
@@ -261,7 +261,7 @@ const CreateShortlinkForm = ({}) => {
                         error,
                     })}
                     placeholder={
-                      error ? (error.message as string) : 'url.codebustar.com'
+                      error ? (error.message as string) : 'example.com'
                     }
                     {...{
                       ...field,
