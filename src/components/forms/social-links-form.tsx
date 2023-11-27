@@ -26,7 +26,7 @@ const socialLinksProvider: SocialLinkProviderProps[] = [
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
-const SocialLinksForm = () => {
+export default function SocialLinksForm() {
   const { data, updateSocialInfo } = useData();
 
   const handleInputChange = (event: InputChangeEvent) => {
@@ -57,6 +57,4 @@ const SocialLinksForm = () => {
       </CardContent>
     </Card>
   );
-};
-
-export default SocialLinksForm;
+}

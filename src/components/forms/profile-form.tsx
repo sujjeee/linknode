@@ -1,6 +1,6 @@
 'use client';
 
-import React, { type FC } from 'react';
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -8,18 +8,16 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useData } from '@/lib/context/LinkContext';
-
-interface ProfileFormProps {}
 
 type InputChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
 
-const ProfileForm: FC<ProfileFormProps> = () => {
+export default function ProfileForm() {
   const { data, updateProfileInfo } = useData();
 
   const handleInputChange = (event: InputChangeEvent) => {
@@ -73,6 +71,4 @@ const ProfileForm: FC<ProfileFormProps> = () => {
       </CardContent>
     </Card>
   );
-};
-
-export default ProfileForm;
+}

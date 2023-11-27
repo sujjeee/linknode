@@ -1,14 +1,12 @@
 'use client';
 
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import type { DragEndEvent } from '@dnd-kit/core';
+import type { AdditionalLinkProps } from '@/types';
+import GetIconInfo from '@/components/GetIconInfo';
+import { useData } from '@/lib/context/LinkContext';
+import { SortableLinks } from '@/components/SortableLinks';
 import {
   DndContext,
   closestCenter,
@@ -26,13 +24,15 @@ import {
   restrictToVerticalAxis,
   restrictToParentElement,
 } from '@dnd-kit/modifiers';
-import { useData } from '@/lib/context/LinkContext';
-import { SortableLinks } from '@/components/SortableLinks';
-import GetIconInfo from '@/components/GetIconInfo';
-import type { AdditionalLinkProps } from '@/types';
-import type { DragEndEvent } from '@dnd-kit/core';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
-const AdditionalLinksForm = () => {
+export default function ExtraLinksForm() {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -126,6 +126,4 @@ const AdditionalLinksForm = () => {
       <div ref={scrollDownRef}></div>
     </>
   );
-};
-
-export default AdditionalLinksForm;
+}

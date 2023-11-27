@@ -1,7 +1,7 @@
 import React from 'react';
-import AdditionalLinksForm from '@/components/forms/AdditionalLinksForm';
-import ProfileForm from '@/components/forms/ProfileForm';
-import SocialLinksForm from '@/components/forms/SocialLinksForm';
+import ExtraLinksForm from '@/components/forms/extra-links-form';
+import ProfileForm from '@/components/forms/profile-form';
+import SocialLinksForm from '@/components/forms/social-links-form';
 import MobileMockup from '@/components/MobileMockup';
 import PreviewButton from '@/components/buttons/preview-button';
 import DemoButton from '@/components/buttons/demo-button';
@@ -25,7 +25,7 @@ export default function Home() {
         <div className="hide_scrollbar flex w-full flex-col gap-5 overflow-y-auto pb-[10vh] lg:pb-0">
           <ProfileForm />
           <SocialLinksForm />
-          <AdditionalLinksForm />
+          <ExtraLinksForm />
           <BackgroundShell />
 
           <div className="grid w-full grid-cols-2 items-center justify-center gap-2 md:grid-cols-4 ">
