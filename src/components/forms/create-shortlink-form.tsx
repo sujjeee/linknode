@@ -13,7 +13,7 @@ import { useData } from '@/lib/context/LinkContext';
 import { PasswordInput } from '@/components/ui/password-input';
 import { ShortLinkInput } from '@/components/ui/shortlink-input';
 import { toast } from 'sonner';
-import createShortLink from '@/app/_actions/shortlink';
+import createShortLink from '@/app/_actions/shortlink/create';
 import { useAPIResponse } from '@/lib/context/APIResponseContext';
 import { Loader2 } from 'lucide-react';
 import {

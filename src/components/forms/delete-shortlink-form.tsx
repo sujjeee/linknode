@@ -5,7 +5,7 @@ import { catchError } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
-import deleteLink from '@/app/_actions/deletelink';
+import deleteShortLink from '@/app/_actions/shortlink/delete';
 import { Check, Copy, Loader2, Trash2 } from 'lucide-react';
 import { useAPIResponse } from '@/lib/context/APIResponseContext';
 
@@ -23,7 +23,7 @@ export default function DeleteShortlinkForm() {
         return;
       }
 
-      const response = await deleteLink({
+      const response = await deleteShortLink({
         id: someResponseInfo?.id,
         authorization: authKey,
         projectSlug: projectSlug,

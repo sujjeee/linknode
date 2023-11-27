@@ -3,7 +3,7 @@
 import { env } from '@/env.mjs';
 import { catchError } from '@/lib/utils';
 
-export default async function deleteLink({
+export default async function deleteShortLink({
   id,
   authorization,
   projectSlug,
