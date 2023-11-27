@@ -1,4 +1,4 @@
-import SiteFooter from '@/components/layouts/SiteFooter';
+import SiteFooter from '@/components/layouts/site-footer';
 
 interface PagesLayoutProps {
   children: React.ReactNode;
