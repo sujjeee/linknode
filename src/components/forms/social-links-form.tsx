@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { SocialInput } from '@/components/ui/social-input';
-import { useData } from '@/lib/context/LinkContext';
+import { useData } from '@/lib/context/link-context';
 import type { SocialLinkProviderProps } from '@/types';
 
 const socialLinksProvider: SocialLinkProviderProps[] = [

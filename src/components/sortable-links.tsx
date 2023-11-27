@@ -5,7 +5,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useData } from '@/lib/context/LinkContext';
+import { useData } from '@/lib/context/link-context';
 import type { ExtraLinkProps } from '@/types';
 
 interface SortableLinksProps {

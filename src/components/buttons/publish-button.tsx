@@ -4,7 +4,7 @@ import React from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { encodeData, isEmptyValues } from '@/lib/utils';
-import { useData } from '@/lib/context/LinkContext';
+import { useData } from '@/lib/context/link-context';
 import { Check, Copy, Send, Share2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { DialogClose } from '@radix-ui/react-dialog';

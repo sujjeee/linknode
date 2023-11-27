@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
-import { useData } from '@/lib/context/LinkContext';
+import { useData } from '@/lib/context/link-context';
 
 export default function DemoButton() {
   const { showDemo } = useData();

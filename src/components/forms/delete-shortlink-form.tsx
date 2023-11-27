@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Check, Copy, Loader2, Trash2 } from 'lucide-react';
 import deleteShortLink from '@/app/_actions/shortlink/delete';
-import { useAPIResponse } from '@/lib/context/APIResponseContext';
+import { useAPIResponse } from '@/lib/context/api-response-context';
 
 export default function DeleteShortlinkForm() {
   const [hasCopied, setHasCopied] = React.useState(false);

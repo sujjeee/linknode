@@ -5,7 +5,7 @@ import { Shuffle, Trash2 } from 'lucide-react';
 import { cn, generateNanoId } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input, type InputProps } from '@/components/ui/input';
-import { useShortener } from '@/lib/context/ShortLinkContext';
+import { useShortener } from '@/lib/context/shortlink-context';
 
 interface ShortLinkInputProps extends InputProps {
   onGlobalChange: (name: string, value?: string) => void;

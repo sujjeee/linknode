@@ -4,7 +4,7 @@ import React from 'react';
 import type { ExtraLinkProps } from '@/types';
 import { Button } from '@/components/ui/button';
 import type { DragEndEvent } from '@dnd-kit/core';
-import { useData } from '@/lib/context/LinkContext';
+import { useData } from '@/lib/context/link-context';
 import GetIconInfo from '@/components/get-icon-info';
 import SortableLinks from '@/components/sortable-links';
 import {

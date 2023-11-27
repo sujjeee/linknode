@@ -5,7 +5,7 @@ import { Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input, type InputProps } from '@/components/ui/input';
-import { useShortener } from '@/lib/context/ShortLinkContext';
+import { useShortener } from '@/lib/context/shortlink-context';
 
 interface AuthorizationInputProps extends InputProps {
   onGlobalChange: (name: string, value?: string) => void;
