@@ -2,7 +2,7 @@ import React from 'react';
 import ExtraLinksForm from '@/components/forms/extra-links-form';
 import ProfileForm from '@/components/forms/profile-form';
 import SocialLinksForm from '@/components/forms/social-links-form';
-import MobileMockup from '@/components/MobileMockup';
+import MobileMockup from '@/components/mobile-mockup';
 import PreviewButton from '@/components/buttons/preview-button';
 import DemoButton from '@/components/buttons/demo-button';
 import PublishButton from '@/components/buttons/publish-button';

@@ -4,7 +4,7 @@ import React from 'react';
 import { Drawer } from 'vaul';
 import { isEmptyValues } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import DisplayData from '@/components/DisplayData';
+import DisplayData from '@/components/display-data';
 import { useData } from '@/lib/context/LinkContext';
 import { DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { BACKGROUND_OPTIONS } from '@/components/backgrounds/background-snippets';

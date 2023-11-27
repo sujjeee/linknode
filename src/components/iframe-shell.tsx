@@ -1,13 +1,13 @@
 // origial code: https://gist.github.com/threepointone/e73a87f7bbbebc78cf71744469ec5a15
 
 import { Suspense, useLayoutEffect, useRef, useState } from 'react';
-import IframeLoader from '@/components/IframeLoader';
+import IframeLoader from '@/components/iframe-loader';
 
 type IFrameProps = React.ComponentPropsWithRef<'iframe'> & {
   fallback?: JSX.Element;
 };
 
-export function IFrame(props: IFrameProps) {
+export function IFrameShell(props: IFrameProps) {
   const { fallback, ...rest } = props;
 
   return (
@@ -65,4 +65,4 @@ function IFrameImplementation(props: React.ComponentPropsWithRef<'iframe'>) {
   );
 }
 
-export default IFrame;
+export default IFrameShell;

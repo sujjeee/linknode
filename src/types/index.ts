@@ -12,10 +12,10 @@ export interface DataProps {
   l: string;
   w: string;
   bg: string;
-  ls: AdditionalLinkProps[];
+  ls: ExtraLinkProps[];
 }
 
-export interface AdditionalLinkProps {
+export interface ExtraLinkProps {
   id: number;
   i: string;
   l: string;

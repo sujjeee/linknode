@@ -1,16 +1,17 @@
-import React, { type FC } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 
-interface AdditionalLinkCardProps {
+interface ExtraLinksCardProps {
   label: string;
   url: string;
   icon?: string;
 }
-const AdditionalLinkCard: FC<AdditionalLinkCardProps> = ({
+
+export default function ExtraLinksCard({
   label,
   url,
   icon,
-}) => {
+}: ExtraLinksCardProps) {
   return (
     <li>
       {label && url && (
@@ -33,6 +34,4 @@ const AdditionalLinkCard: FC<AdditionalLinkCardProps> = ({
       )}
     </li>
   );
-};
-
-export default AdditionalLinkCard;
+}

@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import type { Metadata, Viewport } from 'next';
 import { siteConfig } from '@/app/page';
-import { Providers } from '@/components/Provider';
+import { Providers } from '@/components/providers';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 

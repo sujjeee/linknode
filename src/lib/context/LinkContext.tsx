@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { AdditionalLinkProps, DataProps } from '@/types';
+import type { ExtraLinkProps, DataProps } from '@/types';
 
 interface DataContextType {
   data: DataProps;
-  addNewData: (linkData: AdditionalLinkProps) => void;
-  updateIndex: (updatedIndex: AdditionalLinkProps[]) => void;
+  addNewData: (linkData: ExtraLinkProps) => void;
+  updateIndex: (updatedIndex: ExtraLinkProps[]) => void;
   updateProfileInfo: (name: string, value: string) => void;
   updateSocialInfo: (name: string, value: string) => void;
-  updateAdditionalInfo: (updatedIndex: AdditionalLinkProps[]) => void;
+  updateAdditionalInfo: (updatedIndex: ExtraLinkProps[]) => void;
   showDemo: () => void;
   selectBackground: (bgcode: string) => void;
 }
@@ -89,21 +89,21 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
     }));
   };
 
-  const addNewData = (linkData: AdditionalLinkProps) => {
+  const addNewData = (linkData: ExtraLinkProps) => {
     setData((prevData) => ({
       ...prevData,
       ls: [...prevData.ls, linkData],
     }));
   };
 
-  const updateIndex = (updatedIndex: AdditionalLinkProps[]) => {
+  const updateIndex = (updatedIndex: ExtraLinkProps[]) => {
     setData((prevState) => ({
       ...prevState,
       ls: updatedIndex,
     }));
   };
 
-  const updateAdditionalInfo = (updatedIndex: AdditionalLinkProps[]) => {
+  const updateAdditionalInfo = (updatedIndex: ExtraLinkProps[]) => {
     setData((prevState) => ({
       ...prevState,
       ls: updatedIndex,

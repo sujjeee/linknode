@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Info } from 'lucide-react';
-import IFrame from '@/components/Iframe';
+import IFrameShell from '@/components/iframe-shell';
 
 export default function GetIconInfo() {
   return (
@@ -32,7 +32,11 @@ export default function GetIconInfo() {
         </DialogHeader>
         <div className="grid gap-4">
           <div className="rounded-xl bg-[#181818] p-1">
-            <IFrame src="https://icones.js.org/" width="100%" height="400" />
+            <IFrameShell
+              src="https://icones.js.org/"
+              width="100%"
+              height="400"
+            />
           </div>
         </div>
       </DialogContent>

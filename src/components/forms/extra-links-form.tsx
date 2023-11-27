@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
+import type { ExtraLinkProps } from '@/types';
 import { Button } from '@/components/ui/button';
 import type { DragEndEvent } from '@dnd-kit/core';
-import type { AdditionalLinkProps } from '@/types';
-import GetIconInfo from '@/components/GetIconInfo';
 import { useData } from '@/lib/context/LinkContext';
-import { SortableLinks } from '@/components/SortableLinks';
+import GetIconInfo from '@/components/get-icon-info';
+import SortableLinks from '@/components/sortable-links';
 import {
   DndContext,
   closestCenter,
@@ -46,7 +46,7 @@ export default function ExtraLinksForm() {
   const { data, addNewData, updateIndex } = useData();
 
   const addLinkDetailForm = () => {
-    const newLink: AdditionalLinkProps = {
+    const newLink: ExtraLinkProps = {
       id: Date.now(),
       i: '',
       l: '',

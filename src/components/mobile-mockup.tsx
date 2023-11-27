@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import DisplayData from '@/components/DisplayData';
+import DisplayData from '@/components/display-data';
 import { useData } from '@/lib/context/LinkContext';
 import { BACKGROUND_OPTIONS } from '@/components/backgrounds/background-snippets';
 import { cn, isEmptyValues } from '@/lib/utils';

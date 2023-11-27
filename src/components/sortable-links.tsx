@@ -1,19 +1,19 @@
 'use client';
-import React, { type FC } from 'react';
+import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useData } from '@/lib/context/LinkContext';
-import type { AdditionalLinkProps } from '@/types';
+import type { ExtraLinkProps } from '@/types';
 
 interface SortableLinksProps {
-  id: AdditionalLinkProps;
+  id: ExtraLinkProps;
   index: number;
 }
 
-export const SortableLinks: FC<SortableLinksProps> = ({ id, index }) => {
+export default function SortableLinks({ id, index }: SortableLinksProps) {
   const uniqueID = id.id;
 
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -94,4 +94,4 @@ export const SortableLinks: FC<SortableLinksProps> = ({ id, index }) => {
       </Card>
     </div>
   );
-};
+}

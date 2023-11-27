@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import AdditionalLinkCard from '@/components/AdditionalLinkCard';
 import { Icon } from '@iconify/react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ImageIcon } from 'lucide-react';
 import type { DisplayDataProps } from '@/types';
+import ExtraLinksCard from '@/components/extra-links-card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
+export default function DisplayData({ acc }: DisplayDataProps) {
   const allSocialLinksAreEmpty =
     !acc.f &&
     !acc.t &&
@@ -105,7 +105,7 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
       <ul className="space-y-2">
         {acc.ls &&
           acc.ls.map((link, id) => (
-            <AdditionalLinkCard
+            <ExtraLinksCard
               label={link.l}
               icon={link.i}
               url={link.u}
@@ -115,6 +115,4 @@ const DisplayData: React.FC<DisplayDataProps> = ({ acc }) => {
       </ul>
     </div>
   );
-};
-
-export default DisplayData;
+}
