@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Drawer } from 'vaul';
-import useWindow from '@/hooks/useWindow';
+import useWindow from '@/hooks/use-window';
 import { isEmptyValues } from '@/lib/utils';
 import { Info, LinkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';

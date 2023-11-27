@@ -1,6 +1,6 @@
 'use client';
 
-import useWindow from '@/hooks/useWindow';
+import useWindow from '@/hooks/use-window';
 import { Toaster as RadToaster } from 'sonner';
 
 export function Toaster() {
