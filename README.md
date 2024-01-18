@@ -34,24 +34,23 @@
 git clone https://github.com/sujjeee/linknode.git
 ```
 
-2. Install dependencies using yarn
+2. Install dependencies using pnpm
 
 ```bash
-yarn install
+pnpm install
 ```
 
-3. Start the development server
-
-```bash
-yarn dev
+3. Copy the `.env.example` to `.env` and update the variables.
+ ```bash
+cp .env.example .env
 ```
 
-<!-- ## Environment Variables 🌎
-To use Bitly API need to add the following environment variables to your .env file:
+4. Start the development server
+
 ```bash
-BITLY_API_KEY =
-BITLY_GROUP_GUID =
-``` -->
+pnpm dev
+```
+
 
 ## Demo 👀
 
