@@ -36,6 +36,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const CreateShortlinkForm = ({}) => {
   const { data } = useData();
@@ -182,100 +188,6 @@ const CreateShortlinkForm = ({}) => {
       >
         <FormField
           control={form.control}
-          name="authorization"
-          render={({ field, formState }) => {
-            const error = formState.errors.authorization;
-            return (
-              <FormItem className="space-y-0.5">
-                <FormLabel>
-                  Authorization key
-                  {!isValid && <span className="text-destructive">*</span>}
-                </FormLabel>
-                <FormControl>
-                  <AuthorizationInput
-                    minLength={10}
-                    className={cn('select-none', {
-                      'border-destructive focus-visible:ring-destructive ':
-                        error,
-                    })}
-                    placeholder={
-                      error
-                        ? (error.message as string)
-                        : '9dY7sFgT2Rb4EaZpL1oQxUwC'
-                    }
-                    onGlobalChange={handleGlobalState}
-                    {...{
-                      ...field,
-                      onChange: handleChange,
-                    }}
-                  />
-                </FormControl>
-              </FormItem>
-            );
-          }}
-        />
-        <FormField
-          control={form.control}
-          name="projectSlug"
-          render={({ field, formState }) => {
-            const error = formState.errors.projectSlug;
-            return (
-              <FormItem className="space-y-0.5">
-                <FormLabel>
-                  Project slug
-                  {!isValid && <span className="text-destructive">*</span>}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className={cn('select-none', {
-                      'border-destructive focus-visible:ring-destructive ':
-                        error,
-                    })}
-                    placeholder={error ? (error.message as string) : 'biolinks'}
-                    {...{
-                      ...field,
-                      value: shortUrlInfo.projectSlug,
-                      onChange: handleChange,
-                    }}
-                  />
-                </FormControl>
-              </FormItem>
-            );
-          }}
-        />
-        <FormField
-          control={form.control}
-          name="domain"
-          render={({ field, formState }) => {
-            const error = formState.errors.domain;
-            return (
-              <FormItem className="space-y-0.5">
-                <FormLabel>
-                  Domain
-                  {!isValid && <span className="text-destructive">*</span>}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className={cn('select-none', {
-                      'border-destructive focus-visible:ring-destructive ':
-                        error,
-                    })}
-                    placeholder={
-                      error ? (error.message as string) : 'example.com'
-                    }
-                    {...{
-                      ...field,
-                      value: shortUrlInfo.domain,
-                      onChange: handleChange,
-                    }}
-                  />
-                </FormControl>
-              </FormItem>
-            );
-          }}
-        />
-        <FormField
-          control={form.control}
           name="url"
           render={({ field, formState }) => {
             const error = formState.errors.url;
@@ -334,63 +246,184 @@ const CreateShortlinkForm = ({}) => {
             );
           }}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field, formState }) => {
-            const error = formState.errors.password;
-            return (
-              <FormItem className="space-y-0.5">
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <PasswordInput
-                    className={cn('select-none', {
-                      'border-destructive focus-visible:ring-destructive ':
-                        error,
-                    })}
-                    placeholder={error ? (error.message as string) : '*******'}
-                    {...{
-                      ...field,
-                      value: shortUrlInfo.password,
-                      onChange: handleChange,
-                    }}
-                  />
-                </FormControl>
-              </FormItem>
-            );
-          }}
-        />
-        <FormField
-          control={form.control}
-          name="rewrite"
-          render={({ field, formState }) => {
-            const error = formState.errors.rewrite;
-            return (
-              <FormItem className="space-y-0.5">
-                <FormLabel>Link cloaking</FormLabel>
-                <FormControl>
-                  <Select
-                    defaultValue={error ? error.message : 'false'}
-                    onValueChange={(value) => field.onChange(value === 'true')}
-                  >
-                    <SelectTrigger id="link_cloaking">
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="false">False</SelectItem>
-                      <SelectItem value="true">True</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-              </FormItem>
-            );
-          }}
-        />
+
+        <Accordion type="single" collapsible>
+          <AccordionItem value="item-1" className="border-none">
+            <AccordionTrigger className="text-sm">Optional</AccordionTrigger>
+            <AccordionContent className="grid gap-2 overflow-visible">
+              <FormField
+                control={form.control}
+                name="authorization"
+                render={({ field, formState }) => {
+                  const error = formState.errors.authorization;
+                  return (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>
+                        Authorization key
+                        {!isValid && (
+                          <span className="text-destructive">*</span>
+                        )}
+                      </FormLabel>
+                      <FormControl>
+                        <AuthorizationInput
+                          minLength={10}
+                          className={cn('select-none', {
+                            'border-destructive focus-visible:ring-destructive ':
+                              error,
+                          })}
+                          placeholder={
+                            error
+                              ? (error.message as string)
+                              : '9dY7sFgT2Rb4EaZpL1oQxUwC'
+                          }
+                          onGlobalChange={handleGlobalState}
+                          {...{
+                            ...field,
+                            onChange: handleChange,
+                          }}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  );
+                }}
+              />
+              <FormField
+                control={form.control}
+                name="projectSlug"
+                render={({ field, formState }) => {
+                  const error = formState.errors.projectSlug;
+                  return (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>
+                        Project slug
+                        {!isValid && (
+                          <span className="text-destructive">*</span>
+                        )}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          className={cn('select-none', {
+                            'border-destructive focus-visible:ring-destructive ':
+                              error,
+                          })}
+                          placeholder={
+                            error ? (error.message as string) : 'biolinks'
+                          }
+                          {...{
+                            ...field,
+                            value: shortUrlInfo.projectSlug,
+                            onChange: handleChange,
+                          }}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  );
+                }}
+              />
+              <FormField
+                control={form.control}
+                name="domain"
+                render={({ field, formState }) => {
+                  const error = formState.errors.domain;
+                  return (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>
+                        Domain
+                        {!isValid && (
+                          <span className="text-destructive">*</span>
+                        )}
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          className={cn('select-none', {
+                            'border-destructive focus-visible:ring-destructive ':
+                              error,
+                          })}
+                          placeholder={
+                            error ? (error.message as string) : 'example.com'
+                          }
+                          {...{
+                            ...field,
+                            value: shortUrlInfo.domain,
+                            onChange: handleChange,
+                          }}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  );
+                }}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field, formState }) => {
+                  const error = formState.errors.password;
+                  return (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <PasswordInput
+                          className={cn('select-none', {
+                            'border-destructive focus-visible:ring-destructive ':
+                              error,
+                          })}
+                          placeholder={
+                            error ? (error.message as string) : '*******'
+                          }
+                          {...{
+                            ...field,
+                            value: shortUrlInfo.password,
+                            onChange: handleChange,
+                          }}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  );
+                }}
+              />
+
+              <FormField
+                control={form.control}
+                name="rewrite"
+                render={({ field, formState }) => {
+                  const error = formState.errors.rewrite;
+                  return (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>
+                        Link cloaking{' '}
+                        <span className="text-xs tracking-tighte text-muted-foreground">
+                          (w/ custom domain)
+                        </span>
+                      </FormLabel>
+                      <FormControl>
+                        <Select
+                          defaultValue={error ? error.message : 'false'}
+                          onValueChange={(value) =>
+                            field.onChange(value === 'true')
+                          }
+                        >
+                          <SelectTrigger id="link_cloaking">
+                            <SelectValue placeholder="Select" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="false">False</SelectItem>
+                            <SelectItem value="true">True</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                    </FormItem>
+                  );
+                }}
+              />
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
         <Button type="submit" disabled={isLoading} className="mt-2 w-full">
           {isLoading ? (
             <>
               <Loader2
-                className="mr-2 h-4 w-4 animate-spin"
+                className="mr-2 size-4 animate-spin"
                 aria-hidden="true"
               />
               Creating

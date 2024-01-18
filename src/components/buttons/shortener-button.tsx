@@ -35,17 +35,20 @@ export default function ShortenerButton() {
         <Dialog open={isOpen} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button className="w-full">
-              <LinkIcon className="mr-2 h-4 w-4" />
+              <LinkIcon className="mr-2 size-4" />
               Shortener
             </Button>
           </DialogTrigger>
-          <DialogContent className="p-0 sm:max-w-[450px] " showClose={false}>
+          <DialogContent
+            className="p-0 sm:max-w-[450px] overflow-hidden"
+            showClose={false}
+          >
             <CardHeader className="p-6  pb-0">
               <CardTitle className="flex select-none items-center justify-between text-xl">
                 Powered by Dub.co
                 <Info
                   onClick={() => handleInfoClick('https://dub.co/')}
-                  className="h-4 w-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
+                  className="size-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
                 />
               </CardTitle>
               <CardDescription>
@@ -69,7 +72,7 @@ export default function ShortenerButton() {
         <Drawer.Root>
           <DrawerTrigger asChild>
             <Button className="w-full">
-              <LinkIcon className="mr-2 h-4 w-4" />
+              <LinkIcon className="mr-2 size-4" />
               Shortener
             </Button>
           </DrawerTrigger>
@@ -79,7 +82,7 @@ export default function ShortenerButton() {
                 Powered by Dub.co
                 <Info
                   onClick={() => handleInfoClick('https://dub.co/')}
-                  className="h-4 w-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
+                  className="size-4 cursor-pointer text-muted-foreground hover:text-accent-foreground active:scale-95"
                 />
               </CardTitle>
               <CardDescription>
