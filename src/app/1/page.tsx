@@ -63,7 +63,7 @@ export default function page({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-      <div className="fixed left-0 top-0 z-[-10] h-full w-full">
+      <div className="fixed left-0 top-0 z-[-10] size-full">
         {selectedBgComponent}
       </div>
       <div className="hide_scrollbar p-2 pt-10">

@@ -27,9 +27,9 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={props.value === '' || props.disabled}
         >
           {showPassword ? (
-            <EyeOff className="h-4 w-4" aria-hidden="true" />
+            <EyeOff className="size-4" aria-hidden="true" />
           ) : (
-            <Eye className="h-4 w-4" aria-hidden="true" />
+            <Eye className="size-4" aria-hidden="true" />
           )}
           <span className="sr-only">
             {showPassword ? 'Hide password' : 'Show password'}

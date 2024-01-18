@@ -32,7 +32,7 @@ export function GET(req: NextRequest) {
     name = truncateString({ str: name, maxLength: maxNameLength });
     return new ImageResponse(
       (
-        <div tw="mx-auto flex h-full w-full flex-col items-center justify-center bg-white">
+        <div tw="mx-auto flex size-full flex-col items-center justify-center bg-white">
           <div
             tw="flex px-8 text-6xl font-bold leading-tight tracking-tight"
             style={{ overflowWrap: 'break-word' }}

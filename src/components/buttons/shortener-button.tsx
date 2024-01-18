@@ -40,7 +40,7 @@ export default function ShortenerButton() {
             </Button>
           </DialogTrigger>
           <DialogContent
-            className="p-0 sm:max-w-[450px] overflow-hidden"
+            className="overflow-hidden p-0 sm:max-w-[450px]"
             showClose={false}
           >
             <CardHeader className="p-6  pb-0">

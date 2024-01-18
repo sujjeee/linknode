@@ -31,12 +31,12 @@ const MobileMockup = React.memo(() => {
       <div className="absolute right-[-17px] top-[142px] z-50 h-[64px] w-[4px] rounded-r-lg bg-primary"></div>
       <div
         className={cn(
-          'relative h-full w-full overflow-hidden break-words rounded-[32px]',
+          'relative size-full overflow-hidden break-words rounded-[32px]',
           { 'bg-white': !data.bg },
         )}
       >
         {isEmpty ? (
-          <div className="z-20 flex h-full w-full items-center justify-center bg-white text-sm text-muted-foreground">
+          <div className="z-20 flex size-full items-center justify-center bg-white text-sm text-muted-foreground">
             No information.
           </div>
         ) : (

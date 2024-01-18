@@ -10,7 +10,7 @@ export default function GithubButton() {
       href="https://github.com/sujjeee/linknode"
       className={buttonVariants()}
     >
-      <Github className="mr-2 h-4 w-4" />
+      <Github className="mr-2 size-4" />
       Github
     </Link>
   );

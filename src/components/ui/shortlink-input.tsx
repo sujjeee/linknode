@@ -38,7 +38,7 @@ const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
                 }));
               }}
             >
-              <Trash2 className="h-4 w-4" aria-hidden="true" />
+              <Trash2 className="size-4" aria-hidden="true" />
               <span className="sr-only">delete</span>
             </Button>
           )}
@@ -55,7 +55,7 @@ const ShortLinkInput = React.forwardRef<HTMLInputElement, ShortLinkInputProps>(
               }));
             }}
           >
-            <Shuffle className="h-4 w-4" aria-hidden="true" />
+            <Shuffle className="size-4" aria-hidden="true" />
             <span className="sr-only">randomize</span>
           </Button>
         </div>

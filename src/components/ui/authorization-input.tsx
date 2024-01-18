@@ -45,7 +45,7 @@ const AuthorizationInput = React.forwardRef<
               }));
             }}
           >
-            <Trash2 className="h-4 w-4" aria-hidden="true" />
+            <Trash2 className="size-4" aria-hidden="true" />
             <span className="sr-only">delete</span>
           </Button>
         )}

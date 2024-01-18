@@ -14,7 +14,7 @@ const SocialInput = React.forwardRef<HTMLInputElement, InputProps>(
       <div className="relative">
         <Icon
           icon={propIcon}
-          className="absolute left-2.5 top-2/4 h-5 w-5 translate-y-[-50%] "
+          className="absolute left-2.5 top-2/4 size-5 translate-y-[-50%]"
         />
         <input
           type="search"

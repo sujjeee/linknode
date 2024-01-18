@@ -78,14 +78,14 @@ export default function DeleteShortlinkForm() {
           {isLoading ? (
             <>
               <Loader2
-                className="mr-2 h-4 w-4 animate-spin"
+                className="mr-2 size-4 animate-spin"
                 aria-hidden="true"
               />
               Deleting
             </>
           ) : (
             <>
-              <Trash2 className="mr-2 h-4 w-4" />
+              <Trash2 className="mr-2 size-4" />
               Delete
             </>
           )}
@@ -97,12 +97,12 @@ export default function DeleteShortlinkForm() {
         >
           {hasCopied ? (
             <>
-              <Check className="mr-2 h-4 w-4" />
+              <Check className="mr-2 size-4" />
               Copied
             </>
           ) : (
             <>
-              <Copy className="mr-2 h-4 w-4" />
+              <Copy className="mr-2 size-4" />
               Copy Link
             </>
           )}

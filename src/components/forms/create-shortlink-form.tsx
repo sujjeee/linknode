@@ -392,7 +392,7 @@ const CreateShortlinkForm = ({}) => {
                     <FormItem className="space-y-0.5">
                       <FormLabel>
                         Link cloaking{' '}
-                        <span className="text-xs tracking-tighte text-muted-foreground">
+                        <span className="text-xs tracking-tight text-muted-foreground">
                           (w/ custom domain)
                         </span>
                       </FormLabel>

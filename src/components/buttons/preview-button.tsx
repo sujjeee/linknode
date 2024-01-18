@@ -27,7 +27,7 @@ export default function PreviewButton() {
     : null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-10 flex items-center justify-center p-4 backdrop-blur-sm ">
+    <div className="fixed inset-x-0 bottom-0 z-10 flex items-center justify-center p-4 backdrop-blur-sm">
       <Drawer.Root>
         <DrawerTrigger asChild>
           <Button className="w-full max-w-[350px] overflow-y-auto rounded-full tracking-wide">

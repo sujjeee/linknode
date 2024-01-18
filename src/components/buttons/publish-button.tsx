@@ -52,7 +52,7 @@ export default function PublishButton() {
     <Dialog>
       <DialogTrigger asChild>
         <Button className="w-full" onClick={publish}>
-          <Send className="mr-2 h-4 w-4" />
+          <Send className="mr-2 size-4" />
           Publish
         </Button>
       </DialogTrigger>
@@ -88,7 +88,7 @@ export default function PublishButton() {
                     }
                   }}
                 >
-                  <Share2 className="mr-2 h-4 w-4" />
+                  <Share2 className="mr-2 size-4" />
                   Share
                 </Button>
                 <Button
@@ -100,12 +100,12 @@ export default function PublishButton() {
                 >
                   {hasCopied ? (
                     <>
-                      <Check className="mr-2 h-4 w-4" />
+                      <Check className="mr-2 size-4" />
                       Copied
                     </>
                   ) : (
                     <>
-                      <Copy className="mr-2 h-4 w-4" />
+                      <Copy className="mr-2 size-4" />
                       Copy Link
                     </>
                   )}

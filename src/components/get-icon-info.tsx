@@ -15,7 +15,7 @@ export default function GetIconInfo() {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="ghost" size="icon" id="al" aria-label="icons">
-          <Info className="h-4 w-4 text-muted-foreground hover:text-accent-foreground" />
+          <Info className="size-4 text-muted-foreground hover:text-accent-foreground" />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[625px]">
