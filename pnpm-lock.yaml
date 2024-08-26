@@ -108,7 +108,7 @@ devDependencies:
     version: 4.1.1(react@18.2.0)
   '@types/eslint':
     specifier: ^8.56.2
-    version: 8.56.2
+    version: 8.56.11
   '@types/node':
     specifier: 20.5.7
     version: 20.5.7
@@ -1594,8 +1594,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@types/eslint@8.56.2:
-    resolution: {integrity: sha512-uQDwm1wFHmbBbCZCqAlq6Do9LYwByNZHWzXppSnay9SuwJ+VRbjkbLABer54kcPnMSlG6Fdiy2yaFXm/z9Z5gw==}
+  /@types/eslint@8.56.11:
+    resolution: {integrity: sha512-sVBpJMf7UPo/wGecYOpk2aQya2VUGeHhe38WG7/mN5FufNSubf5VT9Uh9Uyp8/eLJpu1/tuhJ/qTo4mhSB4V4Q==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
